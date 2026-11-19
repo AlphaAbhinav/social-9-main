@@ -18,6 +18,13 @@ export default defineConfig({
         ) {
           throw new Error("NEXT_PUBLIC_API_URL must be an absolute HTTP(S) backend URL at build time.");
         }
+        const backendUrl = new URL(apiUrl);
+        if (
+          ["social9.io", "www.social9.io"].includes(backendUrl.hostname) ||
+          /^\/service(?:\/|$)/.test(backendUrl.pathname)
+        ) {
+          throw new Error("NEXT_PUBLIC_API_URL must point directly to the backend, not the frontend proxy.");
+        }
       },
     },
     nitro(),

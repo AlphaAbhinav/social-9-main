@@ -6,6 +6,10 @@ if (process.env.NODE_ENV === "production" && !configuredApiUrl) {
   throw new Error("NEXT_PUBLIC_API_URL must be configured before building the production frontend.");
 }
 
+if (configuredApiUrl && !/^https?:\/\//i.test(configuredApiUrl)) {
+  throw new Error("NEXT_PUBLIC_API_URL must point directly to an absolute HTTP(S) backend URL.");
+}
+
 export const API_URL = configuredApiUrl || "http://127.0.0.1:8000";
 
 export type Social9User = {

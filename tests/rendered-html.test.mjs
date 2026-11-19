@@ -34,7 +34,7 @@ async function render(path = "/") {
   });
 }
 
-test("compiled browser client calls the configured backend for every authentication route", async (t) => {
+test("compiled browser client calls the configured backend for authentication and dashboard routes", async (t) => {
   const expectedApiUrl = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/$/, "");
   assert.ok(expectedApiUrl, "The API URL must be configured at build and test time");
   const html = await (await render("/signup")).text();
@@ -62,14 +62,16 @@ test("compiled browser client calls the configured backend for every authenticat
     return Response.json({ ok: true });
   });
   try {
+    const readPaths = ["/auth/me", "/health", "/posts?limit=6", "/analytics/summary?days=30", "/billing/subscription", "/social-accounts"];
     for (const hostname of ["social9.io", "www.social9.io"]) {
       window.location.hostname = hostname;
-      for (const path of ["/auth/signup", "/auth/login", "/auth/verify-email", "/auth/verification/request", "/auth/password/forgot", "/auth/password/reset", "/auth/me", "/health"]) {
-        const method = path === "/auth/me" || path === "/health" ? "GET" : "POST";
+      for (const path of ["/auth/signup", "/auth/login", "/auth/verify-email", "/auth/verification/request", "/auth/password/forgot", "/auth/password/reset", ...readPaths]) {
+        const method = readPaths.includes(path) ? "GET" : "POST";
         const body = method === "POST" ? "{}" : undefined;
         await apiRequest(path, { method, body, credentials: "include", headers: { Authorization: "Bearer test-token" } });
         const call = calls.at(-1);
         assert.equal(call.url, `${expectedApiUrl}${path}`);
+        assert.equal(call.init.method, method);
         assert.equal(call.init.body, body);
         assert.equal(call.init.credentials, "include");
         assert.equal(call.init.headers.get("Authorization"), "Bearer test-token");

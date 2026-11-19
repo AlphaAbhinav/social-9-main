@@ -53,6 +53,8 @@ production build commands validate that injection and fail if the value is
 missing or is not an absolute HTTP(S) URL. Production API initialization also
 rejects a missing value, so only local development can use the implicit
 `http://127.0.0.1:8000` fallback.
+Relative API URLs are rejected at initialization. Production builds also reject
+API URLs on the frontend domains or under the obsolete `/service` proxy path.
 
 If hosting the frontend on Render, configure the same environment variables
 before building and remove any obsolete `/service/*` API rewrite in the
