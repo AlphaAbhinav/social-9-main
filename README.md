@@ -25,6 +25,7 @@ npm test
 ```
 
 This performs a production build and verifies the rendered login page and API contract.
+Set `NEXT_PUBLIC_API_URL` in the shell or `.env.local` before running these checks.
 
 The current local authentication journey is:
 
@@ -44,6 +45,14 @@ the `build:vercel` script, publish the generated Build Output API application,
 and the browser will call the FastAPI service directly. Both `social9.io` and
 `www.social9.io` are attached to the project, with the apex domain redirecting
 to `www`.
+
+The API URL must be configured in the **frontend build environment**; setting
+it only on the backend or after the frontend build does not update browser
+requests. Vinext injects `NEXT_PUBLIC_API_URL` into the browser bundle. Both
+production build commands validate that injection and fail if the value is
+missing or is not an absolute HTTP(S) URL. Production API initialization also
+rejects a missing value, so only local development can use the implicit
+`http://127.0.0.1:8000` fallback.
 
 If hosting the frontend on Render, configure the same environment variables
 before building and remove any obsolete `/service/*` API rewrite in the

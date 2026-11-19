@@ -34,6 +34,53 @@ async function render(path = "/") {
   });
 }
 
+test("compiled browser client calls the configured backend for every authentication route", async (t) => {
+  const expectedApiUrl = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/$/, "");
+  assert.ok(expectedApiUrl, "The API URL must be configured at build and test time");
+  const html = await (await render("/signup")).text();
+  const apiAsset = html.match(/href="([^"<>]*\/api-[^"<>]+\.js)"/)?.[1];
+  assert.ok(apiAsset, "The signup page must load the compiled API client");
+  const bundle = await (await fetch(new URL(apiAsset, `http://127.0.0.1:${testPort}`))).text();
+  assert.doesNotMatch(bundle, /\/service/);
+  const browserApi = await import(new URL(`../.output/public${apiAsset}`, import.meta.url));
+  assert.ok(Object.values(browserApi).includes(expectedApiUrl));
+  const apiRequest = Object.values(browserApi).find(value =>
+    typeof value === "function" && value.constructor.name === "AsyncFunction",
+  );
+  assert.equal(typeof apiRequest, "function");
+
+  const previousWindow = globalThis.window;
+  globalThis.window = {
+    location: { hostname: "www.social9.io" },
+    localStorage: { getItem: () => null },
+    sessionStorage: { length: 0 },
+    dispatchEvent() {},
+  };
+  const calls = [];
+  t.mock.method(globalThis, "fetch", async (url, init) => {
+    calls.push({ url, init });
+    return Response.json({ ok: true });
+  });
+  try {
+    for (const hostname of ["social9.io", "www.social9.io"]) {
+      window.location.hostname = hostname;
+      for (const path of ["/auth/signup", "/auth/login", "/auth/verify-email", "/auth/verification/request", "/auth/password/forgot", "/auth/password/reset", "/auth/me", "/health"]) {
+        const method = path === "/auth/me" || path === "/health" ? "GET" : "POST";
+        const body = method === "POST" ? "{}" : undefined;
+        await apiRequest(path, { method, body, credentials: "include", headers: { Authorization: "Bearer test-token" } });
+        const call = calls.at(-1);
+        assert.equal(call.url, `${expectedApiUrl}${path}`);
+        assert.equal(call.init.body, body);
+        assert.equal(call.init.credentials, "include");
+        assert.equal(call.init.headers.get("Authorization"), "Bearer test-token");
+      }
+    }
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window;
+    else globalThis.window = previousWindow;
+  }
+});
+
 test("renders the post composer before any Pinterest account or boards are loaded", async () => {
   const response = await render("/create-post");
   assert.equal(response.status, 200);

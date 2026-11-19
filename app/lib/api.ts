@@ -1,8 +1,12 @@
 import { invalidateDashboardCache } from "./dashboard-cache";
 
-const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/$/, "");
 
-export const API_URL = configuredApiUrl ?? "http://127.0.0.1:8000";
+if (process.env.NODE_ENV === "production" && !configuredApiUrl) {
+  throw new Error("NEXT_PUBLIC_API_URL must be configured before building the production frontend.");
+}
+
+export const API_URL = configuredApiUrl || "http://127.0.0.1:8000";
 
 export type Social9User = {
   id: number;
