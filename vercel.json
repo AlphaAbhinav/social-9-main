@@ -33,11 +33,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/service/:path*",
-      "destination": "https://social9-backend-2tjj.onrender.com/:path*"
-    }
   ]
 }

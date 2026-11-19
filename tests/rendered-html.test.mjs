@@ -260,10 +260,8 @@ test("keeps the login connected to the FastAPI contract", async () => {
   assert.match(login, /\/auth\/login/);
   assert.match(api, /NEXT_PUBLIC_API_URL/);
   assert.match(composer, /getContentTemplate/);
-  assert.match(api, /isSocial9Browser/);
-  assert.match(api, /\? "\/service"/);
-  assert.match(vercelConfig, /"source": "\/service\/:path\*"/);
-  assert.match(vercelConfig, /"destination": "https:\/\/social9-backend-2tjj\.onrender\.com\/:path\*"/);
+  assert.doesNotMatch(api, /isSocial9Browser|\/service/);
+  assert.equal(JSON.parse(vercelConfig).rewrites, undefined);
   assert.match(session, /social9_access_token/);
   assert.match(signup, /\/auth\/signup/);
   assert.match(forgotPassword, /\/auth\/password\/forgot/);

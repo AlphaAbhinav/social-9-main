@@ -1,14 +1,8 @@
 import { invalidateDashboardCache } from "./dashboard-cache";
 
 const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
-const isSocial9Browser =
-  typeof window !== "undefined" &&
-  (window.location.hostname === "social9.io" ||
-    window.location.hostname === "www.social9.io");
 
-export const API_URL = isSocial9Browser
-  ? "/service"
-  : configuredApiUrl ?? "http://127.0.0.1:8000";
+export const API_URL = configuredApiUrl ?? "http://127.0.0.1:8000";
 
 export type Social9User = {
   id: number;

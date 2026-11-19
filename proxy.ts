@@ -2,6 +2,9 @@
 // is also auto-packaged as standalone Routing Middleware by Vercel.
 export function proxy(request: Request) {
   const nonce = crypto.randomUUID().replaceAll("-", "");
+  const apiOrigin = new URL(
+    process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000",
+  ).origin;
   const developmentConnections = process.env.NODE_ENV === "development"
     ? " http://127.0.0.1:8000 http://localhost:8000 ws: wss:"
     : "";
@@ -12,7 +15,7 @@ export function proxy(request: Request) {
     "img-src 'self' data: blob: https:",
     "media-src 'self' blob: https:",
     "font-src 'self' data:",
-    `connect-src 'self' https://social9-backend-2tjj.onrender.com https://*.razorpay.com${developmentConnections}`,
+    `connect-src 'self' ${apiOrigin} https://*.razorpay.com${developmentConnections}`,
     "frame-src https://*.razorpay.com",
     "object-src 'none'",
     "base-uri 'self'",
@@ -38,5 +41,5 @@ export function proxy(request: Request) {
 }
 
 export const config = {
-  matcher: ["/((?!service/|_next/|.*\\.[^/]+$).*)"],
+  matcher: ["/((?!_next/|.*\\.[^/]+$).*)"],
 };

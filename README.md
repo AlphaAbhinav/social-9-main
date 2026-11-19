@@ -13,9 +13,9 @@ npm run dev
 
 Copy `.env.example` to `.env.local`. It is configured for the deployed Render
 backend; set `NEXT_PUBLIC_API_URL=http://127.0.0.1:8000` only when the backend
-runs locally. In production,
-browser requests use the same-origin `/service` proxy configured in `vercel.json`;
-its upstream is `https://social9-backend-2tjj.onrender.com`. The canonical public URL is
+runs locally. Browser requests use `NEXT_PUBLIC_API_URL` directly in both
+development and production, preserving the backend's original endpoint paths.
+The canonical public URL is
 `https://www.social9.io`.
 
 ## Checks
@@ -36,11 +36,19 @@ Signup -> Verify email -> Login -> Dashboard -> Logout
 
 This repository includes a Nitro-powered Vercel build and `vercel.json`.
 Import the private GitHub repository into Vercel and configure
-`NEXT_PUBLIC_SITE_URL=https://www.social9.io` for Production. Vercel will use
+`NEXT_PUBLIC_SITE_URL=https://www.social9.io` and
+`NEXT_PUBLIC_API_URL=https://social9-backend-2tjj.onrender.com` for Production
+before building. Rebuild/redeploy after changing `NEXT_PUBLIC_API_URL` because
+it is embedded in the browser bundle. Vercel will use
 the `build:vercel` script, publish the generated Build Output API application,
-and proxy `/service/*` to the FastAPI service. Both `social9.io` and
+and the browser will call the FastAPI service directly. Both `social9.io` and
 `www.social9.io` are attached to the project, with the apex domain redirecting
 to `www`.
+
+If hosting the frontend on Render, configure the same environment variables
+before building and remove any obsolete `/service/*` API rewrite in the
+frontend's Redirects/Rewrites settings. API requests do not require a frontend
+rewrite. The backend must allow the frontend origin in its CORS configuration.
 
 ## Android app promotion
 
