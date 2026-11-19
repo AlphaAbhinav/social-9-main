@@ -1,0 +1,22 @@
+.instagram-music { margin:20px 0; padding:18px; border:1px solid var(--line,#ddd4e8); border-radius:14px; min-width:0; }
+.instagram-music legend { padding:0 6px; font-weight:650; }
+.instagram-music p { font-size:12px; line-height:1.6; margin:8px 0 14px; }
+.instagram-music label { display:grid; gap:7px; font-size:12px; }
+.instagram-music input:not([type=checkbox]):not([type=range]),.instagram-music select { min-width:0; width:100%; border:1px solid var(--line,#ddd4e8); border-radius:8px; padding:10px; color:inherit; background:transparent; font:inherit; }
+.instagram-music select option { color:#251e35; background:#fff; }
+.instagram-music-buttons { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.instagram-music button { cursor:pointer; }
+.instagram-music button:disabled { opacity:.55; cursor:not-allowed; }
+.instagram-music-search { display:grid; grid-template-columns:minmax(0,1fr) 130px auto; gap:10px; align-items:end; margin-top:16px; }
+.instagram-music-results { list-style:none; padding:0; margin:14px 0; max-height:360px; overflow:auto; }
+.instagram-music-results li { display:grid; grid-template-columns:minmax(100px,1fr) minmax(130px,1fr) auto; gap:12px; align-items:center; border-top:1px solid var(--line,#ddd4e8); padding:14px 0; }
+.instagram-music-results strong,.instagram-music-results span,.instagram-music-selected>span { display:block; font-size:12px; overflow-wrap:anywhere; }
+.instagram-music-results span { margin-top:4px; opacity:.75; }
+.instagram-music-results audio { width:100%; height:34px; }
+.instagram-music-results button[aria-pressed=true] { outline:2px solid #9868ef; }
+.instagram-music-selected,.instagram-music-manual { display:grid; gap:14px; margin-top:16px; }
+.instagram-music-selected>button { justify-self:start; }
+.instagram-music .instagram-music-toggle { display:flex; align-items:center; gap:10px; }
+.instagram-music-toggle input { width:16px; height:16px; }
+.instagram-music .instagram-music-error { color:#df5974; }
+@media(max-width:640px) { .instagram-music-search,.instagram-music-results li { grid-template-columns:minmax(0,1fr); } .instagram-music-results button { justify-self:start; } }

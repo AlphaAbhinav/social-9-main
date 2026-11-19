@@ -1,0 +1,64 @@
+html .neon-app-shell .accounts-content .provider-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  margin-top: 20px;
+}
+html .neon-app-shell .accounts-content .provider-card {
+  min-height: 0;
+  padding: 20px;
+  gap: 0;
+}
+html .accounts-content .account-network-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+html .accounts-content .account-network-title .provider-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+html .neon-app-shell .accounts-content .provider-heading h2 { font-size: 18px; }
+html .neon-app-shell .accounts-content .provider-copy > p { margin: 12px 0; }
+html .neon-app-shell .accounts-content .connected-profile {
+  margin: 12px 0 0;
+  padding: 10px;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+}
+html .accounts-content .connected-profile > div { flex: 1; min-width: 100px; }
+html .accounts-content .account-more-profiles { margin-top: 12px; }
+html .accounts-content .account-more-profiles > summary {
+  cursor: pointer;
+  color: var(--planner-text);
+  font-size: 13px;
+  padding: 8px 0;
+}
+html .accounts-content .account-more-profiles > summary:focus-visible {
+  outline: 2px solid var(--planner-accent);
+  outline-offset: 3px;
+}
+html .accounts-content .accounts-upcoming {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--planner-surface);
+  border: 1px solid var(--planner-line);
+  border-radius: 14px;
+}
+html .accounts-content .accounts-upcoming-heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+html .accounts-content .accounts-upcoming-heading h2 { margin: 0; font-size: 15px; color: var(--planner-text); }
+html .accounts-content .accounts-upcoming-list { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 14px; }
+html .accounts-content .accounts-upcoming-network { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--planner-text); }
+html .accounts-content .accounts-upcoming-network .social-brand-icon { width: 28px; height: 28px; border-radius: 8px; }
+html .accounts-content .accounts-upcoming > p { margin: 12px 0 0; color: var(--planner-muted); font-size: 12px; line-height: 1.5; }
+@media (max-width: 1250px) {
+  html .neon-app-shell .accounts-content .provider-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  html .neon-app-shell .accounts-content .provider-grid { grid-template-columns: 1fr; }
+  html .neon-app-shell .accounts-content .provider-heading { flex-direction: row; align-items: center; }
+  html .neon-app-shell .accounts-content .provider-card { padding: 16px; }
+}

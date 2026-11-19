@@ -1,0 +1,28 @@
+/* Workspace section layouts. */
+
+html .neon-app-shell .templates-studio .template-card{padding:22px}
+html .neon-app-shell .templates-studio .template-caption{display:block;min-height:0;overflow:visible;-webkit-line-clamp:unset;font-size:13px;line-height:1.75}
+html .neon-app-shell .templates-studio .template-card h2{font-size:22px;margin:20px 0 12px}
+html .neon-app-shell .templates-studio .template-card dl{margin-top:20px;padding-top:18px;gap:12px}
+html .neon-app-shell .templates-studio .template-card dd{font-size:12px}
+html .neon-app-shell .templates-studio .template-tags{margin:20px 0}
+html .neon-app-shell .calendar-studio .brief-disclosure{margin-top:18px;background:var(--s9-highlight);border-radius:16px}
+html .neon-app-shell .calendar-studio .brief-disclosure>summary{padding:20px;gap:20px}
+html .neon-app-shell .calendar-studio .brief-disclosure summary strong{font-size:17px;color:var(--s9-text)}
+html .neon-app-shell .calendar-studio .disclosure-action{font-size:12px;padding:10px 14px;border:1px solid var(--s9-border);border-radius:10px;background:var(--s9-raised)}
+html .neon-app-shell .calendar-studio .brief-disclosure-body{padding:22px}
+html .neon-app-shell .calendar-studio .business-brief-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+html .neon-app-shell .calendar-studio .business-brief-grid textarea{min-height:88px}
+html .neon-app-shell .calendar-studio .ai-calendar-controls{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));align-items:end;gap:16px}
+html .neon-app-shell .calendar-studio .calendar-layout{grid-template-columns:minmax(0,1fr)}
+html .neon-app-shell .calendar-studio .calendar-side-panel{width:100%;max-width:none}
+html .neon-app-shell .calendar-studio .calendar-studio-heading{margin-top:24px}
+html .neon-app-shell .calendar-studio .calendar-side-panel .drafts-card{padding:20px}
+html .neon-app-shell .calendar-studio .calendar-side-panel .drafts-card .empty-posts{padding:12px 0;margin:0}
+@media(max-width:700px){html .neon-app-shell .calendar-studio .business-brief-grid{grid-template-columns:1fr}html .neon-app-shell .calendar-studio .brief-disclosure>summary{align-items:flex-start}html .neon-app-shell .calendar-studio .disclosure-action{font-size:11px;white-space:normal}html .neon-app-shell .calendar-studio .brief-disclosure-body{padding:16px}}
+.connected-account-avatar {display:inline-flex;width:40px;height:40px;flex:0 0 40px;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;}
+.connected-account-avatar img {width:40px;height:40px;object-fit:cover;border-radius:50%;}
+.connected-account-avatar .social-brand-icon {width:32px;height:32px;}
+html .dashboard-studio .connected-profile > div {flex:1;}
+
+html .neon-app-shell .calendar-more-posts{font-size:11px;padding:7px;border:1px solid var(--s9-border);border-radius:7px;background:var(--s9-tint);color:var(--s9-accent);text-align:left}html .neon-app-shell .calendar-day-agenda ul{list-style:none;padding:0}html .neon-app-shell .calendar-day-agenda li>button{width:100%;text-align:left;margin:8px 0;padding:12px;border:1px solid var(--s9-border);border-radius:8px;background:var(--s9-panel);color:var(--s9-text)}html .neon-app-shell .calendar-day-agenda time,html .neon-app-shell .calendar-day-agenda small{color:var(--s9-muted);font-size:12px}

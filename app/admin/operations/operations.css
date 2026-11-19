@@ -1,0 +1,26 @@
+.ops-page { min-height: 100vh; flex-direction: column; }
+.ops-page .admin-main { width: 100%; max-width: 1500px; margin: auto; }
+.admin-access-screen { display: grid; place-content: center; text-align: center; }
+.ops-page .admin-topbar { gap: 18px; flex-wrap: wrap; }
+.ops-page button { padding: 9px 14px; border: 1px solid var(--admin-line); border-radius: 8px; cursor: pointer; background: var(--admin-surface); color: var(--admin-ink); }
+.ops-page button:disabled { opacity: .5; cursor: default; }
+.ops-page .admin-panel { margin: 24px 0; padding: 24px; }
+.ops-tabs, .ops-row-actions, .ops-search { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.ops-tabs button[aria-current="page"] { background: #183f32; color: #fff; }
+.ops-page table { border-collapse: collapse; width: 100%; }
+.ops-page td, .ops-page th { padding: 12px; text-align: left; vertical-align: top; max-width: 380px; overflow-wrap: anywhere; }
+.ops-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+.ops-metrics article { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid var(--admin-line); border-radius: 12px; }
+.ops-metrics strong { font-size: 28px; }
+.ops-search { margin: 24px 0; }
+.ops-search label { flex: 1; min-width: 220px; }
+.ops-page input, .ops-page textarea { width: 100%; padding: 10px; border: 1px solid var(--admin-line); border-radius: 6px; background: var(--s9-canvas); color: var(--admin-ink); }
+.ops-dialog { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: auto; border: 1px solid var(--admin-line); border-radius: 16px; padding: 28px; color: var(--admin-ink); background: var(--admin-surface); }
+.ops-dialog::backdrop { background: #0d211bb3; }
+.ops-dialog form, .ops-dialog label { display: flex; flex-direction: column; gap: 10px; }
+.ops-dialog form { gap: 18px; }
+.ops-dialog textarea { min-height: 90px; }
+.ops-dialog .ops-checkbox { flex-direction: row; align-items: center; }
+.ops-dialog .ops-checkbox input { width: auto; }
+.ops-success { padding: 14px; background: #e7f3e9; color: #183f32; border-radius: 8px; }
+@media (max-width: 600px) { .ops-page .admin-panel { padding: 16px; } .ops-page .admin-main { padding: 20px 12px; } }

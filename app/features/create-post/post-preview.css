@@ -1,0 +1,29 @@
+.post-preview { margin: 24px 0; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface, transparent); }
+.post-preview-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.post-preview-heading h2 { margin:0; font-size:20px; }
+.post-preview-heading span,.post-preview-note { font-size:12px; opacity:.7; }
+.post-preview-platforms { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.post-preview-platforms button { display:flex; align-items:center; gap:6px; background:transparent; color:inherit; border:1px solid var(--line); padding:8px 12px; border-radius:20px; cursor:pointer; }
+.post-preview-platforms svg { width:18px; height:18px; }
+.post-preview-platforms button[aria-pressed=true] { border-color:#8758ec; background:rgba(135,88,236,.15); }
+.post-preview-card { max-width:520px; margin:auto; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface,transparent); }
+.post-preview-card header { display:flex; align-items:center; gap:10px; padding:16px; }
+.post-preview-card header div { flex:1; min-width:0; }
+.post-preview-card header strong { display:block; overflow-wrap:anywhere; }
+.post-preview-card header small { display:block; font-size:12px; opacity:.7; margin-top:3px; }
+.post-preview-avatar { display:grid; place-items:center; width:40px; height:40px; flex-shrink:0; border-radius:50%; background:#8758ec; color:white; font-weight:700; }
+.post-preview-caption { white-space:pre-wrap; overflow-wrap:anywhere; padding:0 16px; line-height:1.6; }
+.post-preview-media img,.post-preview-media video { display:block; width:100%; max-height:480px; object-fit:contain; background:#111; }
+.post-preview-media small { display:block; padding:8px 16px; font-size:12px; opacity:.7; }
+.post-preview-card.preview-vertical { max-width:320px; }
+.preview-vertical .post-preview-media img,.preview-vertical .post-preview-media video { aspect-ratio:9/16; max-height:560px; object-fit:contain; }
+.preview-pinterest { max-width:360px; }
+.post-preview-card h3 { padding:0 16px; }
+.post-preview-card footer { padding:14px 16px; border-top:1px solid var(--line); font-size:13px; opacity:.65; }
+.post-preview-carousel { display:flex; align-items:center; justify-content:center; gap:18px; padding:12px; }
+.post-preview-carousel button { background:transparent; color:inherit; border:1px solid var(--line); border-radius:8px; padding:6px 14px; cursor:pointer; }
+.post-preview-carousel button:disabled { opacity:.3; cursor:default; }
+.post-preview-placeholder { padding:36px 18px; text-align:center; opacity:.6; border-block:1px dashed var(--line); }
+.post-preview-note { margin:14px 0 0; line-height:1.5; }
+
+.saved-post-preview{padding:0!important;border:0!important;background:transparent!important}.saved-post-preview .post-preview-card{border:0;border-radius:12px;overflow:hidden}.saved-post-preview .post-preview-platforms{padding:0 0 10px}.saved-post-preview .post-preview-platforms button{font-size:11px;padding:5px 8px}.saved-post-preview .post-preview-card header{padding:12px}.saved-post-preview .post-preview-card .post-preview-caption{white-space:pre-wrap;font-size:14px;margin:0;padding:12px}.saved-post-preview .post-preview-card footer{font-size:12px;padding:12px}.saved-post-preview .post-preview-media{position:relative}.saved-post-preview .post-preview-media img{max-height:350px;width:100%;object-fit:contain;background:#08080b}.saved-post-preview .post-preview-card small{font-size:10px}.saved-video-label{position:absolute;bottom:10px;left:10px;padding:5px 8px;background:#151020;color:#fff;border-radius:6px;font-size:11px}.recent-published-links{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.recent-published-links a{color:#cca7ff;font-size:12px}

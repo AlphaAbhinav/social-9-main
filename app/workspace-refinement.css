@@ -1,0 +1,80 @@
+/* Shared calendar palette follows the site's charcoal, violet and rose theme. */
+html .public-calendar{background:var(--planner-bg);color:var(--planner-text);border:1px solid var(--planner-line);font-family:inherit;color-scheme:inherit;padding:clamp(22px,4vw,48px)}
+html .public-calendar :is(h2,.s9-demo-heading h3,.s9-calendar-demo){color:var(--planner-text)}
+html .public-calendar :is(h2 em,.public-calendar-heading>p,.public-calendar-footer,.s9-preview-toolbar,.s9-preview-caption,.s9-demo-heading small,.s9-demo-days>span,.s9-demo-grid>div>small,.s9-calendar-note>span:last-child){color:var(--planner-muted)}
+html .public-calendar .s9-product-preview{background:var(--planner-idea);max-width:1100px;min-height:0}
+html .public-calendar .s9-calendar-demo{background:var(--planner-surface);transform:none}
+html .public-calendar :is(.s9-demo-grid,.s9-demo-grid>div){border-color:var(--planner-line)}
+html .public-calendar .s9-calendar-note{background:var(--planner-idea);color:var(--planner-text);transform:none;border-left:3px solid var(--planner-accent)}
+html .public-calendar .note-3{background:var(--planner-idea)}
+html .public-calendar .note-6{background:var(--planner-idea)}
+html .public-calendar .s9-demo-badge{background:var(--planner-idea);color:var(--planner-accent)}
+html .public-calendar :is(.s9-floating-note,.public-calendar-footer a){background:var(--s9-action);color:#fff}
+html .neon-workspace-page .dashboard-header{min-height:0;padding-bottom:20px;gap:20px}
+html .neon-workspace-page .dashboard-header h1{font-size:clamp(27px,2.7vw,38px);line-height:1.15;margin:7px 0}
+html .neon-workspace-page .dashboard-header p{font-size:13px;max-width:660px;line-height:1.55}
+html .neon-workspace-page :is(.composer-layout,.library-toolbar,.template-toolbar,.calendar-toolbar){margin-top:20px}
+html .neon-workspace-page .content-plan-banner{padding:14px 18px;margin-top:16px;border-radius:14px}
+html .neon-workspace-page .content-plan-banner h2{font-size:17px;margin:4px 0}
+html .neon-workspace-page .content-plan-banner p{font-size:12px;line-height:1.5}
+html .neon-workspace-page .brief-disclosure{padding:0;margin-top:14px;border-radius:14px}
+.brief-disclosure>summary,.composer-assist-disclosure>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;padding:16px 18px}
+.brief-disclosure>summary::-webkit-details-marker,.composer-assist-disclosure>summary::-webkit-details-marker{display:none}
+.brief-disclosure summary strong{display:block;font-size:14px}.brief-disclosure summary small{display:block;margin-top:5px;color:var(--planner-muted);font-size:12px}
+.disclosure-action{display:flex;gap:14px;align-items:center;font-size:12px;color:var(--planner-accent);white-space:nowrap}
+.brief-disclosure[open]>summary{border-bottom:1px solid var(--planner-line)}
+.brief-disclosure[open]>summary b,.composer-assist-disclosure[open]>summary b{display:inline-block;transform:rotate(45deg)}
+.brief-disclosure-body{padding:18px}.brief-disclosure-body>div:first-child{display:none}
+html .brief-disclosure .business-brief-grid{gap:14px;margin:0 0 14px}
+html .brief-disclosure .business-brief-grid textarea{min-height:78px;padding:10px 12px}
+html .neon-workspace-page .calendar-layout{grid-template-columns:minmax(0,1fr) 260px;gap:16px}
+html .neon-workspace-page .calendar-card{background:var(--planner-cell);border:1px solid var(--planner-line);border-radius:16px;overflow:hidden;min-width:0}
+html .neon-workspace-page .weekday-row{background:var(--planner-surface);border-color:var(--planner-line)}
+html .neon-workspace-page .weekday-row span{color:var(--planner-muted);padding:13px 6px;font-size:10px}
+html .neon-workspace-page .calendar-day{background:var(--planner-cell);border-color:var(--planner-line);min-height:125px;padding:8px 5px}
+html .neon-workspace-page .calendar-day.outside{background:var(--planner-bg)}
+html .neon-workspace-page .day-number{color:var(--planner-muted)}
+html .neon-workspace-page .day-number.today{background:var(--s9-action);color:white;border-radius:50%}
+html .neon-workspace-page :is(.content-plan-idea,.calendar-post){background:var(--planner-idea);border:1px solid var(--planner-line);border-left:3px solid var(--planner-accent);border-radius:7px;padding:8px 6px;color:var(--planner-text);box-shadow:none}
+html .neon-workspace-page .calendar-post.instagram{background:var(--planner-idea)}
+html .neon-workspace-page .calendar-post.linkedin{background:var(--planner-idea)}
+html .neon-workspace-page :is(.content-plan-idea,.calendar-post) span{font-size:11px;line-height:1.4;white-space:normal;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+html .neon-workspace-page :is(.content-plan-idea,.calendar-post) time{font-size:10px;color:var(--planner-muted)}
+html .neon-workspace-page .composer-layout{grid-template-columns:minmax(0,1fr) 290px;gap:18px}
+html .neon-workspace-page .composer-card{padding:22px;min-width:0}
+html .neon-workspace-page .composer-card textarea{min-height:140px;padding:14px}
+html .neon-workspace-page .composer-assist-disclosure{padding:0;margin-top:14px}
+.composer-assist-disclosure>summary{font-size:13px;font-weight:600;padding:14px}
+.composer-assist-disclosure>summary span{font-size:11px;font-weight:400;color:var(--planner-muted)}
+.composer-assist-disclosure>summary b{margin-left:10px}
+.composer-assist-disclosure[open]>:not(summary){margin:14px}
+html .neon-workspace-page .platform-fieldset{margin-top:18px}
+html .neon-workspace-page .platform-option{padding:11px}
+html .neon-workspace-page .composer-row{margin-top:18px}
+html .neon-workspace-page .composer-actions{flex-wrap:wrap;gap:10px;margin-top:18px}
+.brief-disclosure>summary:focus-visible,.composer-assist-disclosure>summary:focus-visible{outline:2px solid var(--planner-accent);outline-offset:3px;border-radius:12px}
+@media(max-width:1200px){html .neon-workspace-page :is(.calendar-layout,.composer-layout){grid-template-columns:minmax(0,1fr)}html .neon-workspace-page .calendar-side-panel{max-width:none}}
+@media(max-width:700px){.brief-disclosure>summary{align-items:flex-start}.disclosure-action{font-size:0}.disclosure-action b{font-size:20px}html .neon-workspace-page .composer-card{padding:16px}html .neon-workspace-page .composer-row{grid-template-columns:1fr}html .neon-workspace-page .calendar-card{overflow-x:auto}html .neon-workspace-page :is(.weekday-row,.month-grid){min-width:650px}.composer-assist-disclosure>summary span{font-size:0}.composer-assist-disclosure>summary b{font-size:16px}html .neon-workspace-page .dashboard-header h1{font-size:28px}}
+
+html .public-calendar :is(.s9-demo-days,.s9-demo-grid){grid-template-columns:repeat(7,minmax(0,1fr))}
+@media(max-width:700px){html .public-calendar .s9-product-preview{overflow-x:auto}html .public-calendar .s9-calendar-demo{min-width:620px}}
+/* Calendar studio: planning canvas with the brief visible alongside it. */
+html .neon-workspace-page.calendar-studio .calendar-studio-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;padding:22px;background:var(--planner-idea);border:1px solid var(--planner-line);border-radius:18px 18px 0 0}
+.calendar-studio-heading h2{margin:7px 0 0;font-size:22px;font-weight:550;letter-spacing:-.6px;color:var(--planner-text)}
+.calendar-studio-key{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--planner-text)}
+.calendar-studio-key span:before{content:'';display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;background:#c695e3}
+.calendar-studio-key span:nth-child(2):before{background:#e78ab8}.calendar-studio-key span:nth-child(3):before{background:#79a6ee}
+html .neon-workspace-page.calendar-studio .calendar-toolbar{margin-top:0;border-radius:0;background:var(--planner-surface);border:1px solid var(--planner-line);border-top:0;padding:15px 20px}
+html .neon-workspace-page.calendar-studio .calendar-layout{grid-template-columns:minmax(0,1fr) 310px;background:var(--planner-bg);padding:16px;border:1px solid var(--planner-line);border-top:0;border-radius:0 0 18px 18px;margin-top:0;align-items:start}
+html .neon-workspace-page.calendar-studio .calendar-side-panel{display:grid;gap:16px;min-width:0;margin:0}
+html .calendar-studio .brief-disclosure{margin-top:0;background:var(--planner-surface);border-color:var(--planner-line)}
+html .calendar-studio .business-brief-grid{grid-template-columns:1fr;gap:12px}
+html .calendar-studio .business-brief-grid label{font-size:12px;gap:5px}
+html .calendar-studio .brief-disclosure-body{padding:14px}
+html .calendar-studio .brief-disclosure summary{padding:14px}.calendar-studio .brief-disclosure summary small{line-height:1.5}
+html .calendar-studio .ai-calendar-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+html .calendar-studio .ai-calendar-controls>*{min-width:0;width:100%}
+html .calendar-studio .calendar-day{min-height:150px;padding:10px 6px}
+html .calendar-studio .calendar-card{box-shadow:0 8px 24px #0000000a}
+@media(max-width:1100px){html .neon-workspace-page.calendar-studio .calendar-layout{grid-template-columns:minmax(0,1fr)}html .calendar-studio .business-brief-grid{grid-template-columns:repeat(2,minmax(0,1fr))}html .calendar-studio .calendar-studio-heading{flex-wrap:wrap}}
+@media(max-width:700px){html .neon-workspace-page.calendar-studio .calendar-layout{padding:8px}html .calendar-studio .business-brief-grid{grid-template-columns:1fr}.calendar-studio-heading h2{font-size:19px}}

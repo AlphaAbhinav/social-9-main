@@ -1,0 +1,29 @@
+.network-analytics { display: grid; gap: 20px; min-width: 0; margin: 20px 0 32px; color: var(--planner-text, var(--text)); }
+.network-analytics-heading, .network-analytics-title, .network-analytics-account-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.network-analytics-title { justify-content: flex-start; }
+.network-analytics-title > svg { width: 36px; height: 36px; flex-shrink: 0; }
+.network-analytics h2 { margin: 0; font-size: 23px; font-weight: 750; line-height: 1.3; }
+.network-analytics-heading p { margin: 5px 0 0; color: var(--planner-muted, var(--muted)); font-size: 14px; }
+.network-analytics-period { border: 1px solid var(--planner-line, var(--line)); border-radius: 999px; padding: 8px 13px; font-size: 12px; white-space: nowrap; }
+.network-analytics-account, .network-analytics > .network-analytics-empty { min-width: 0; border: 1px solid var(--planner-line, var(--line)); border-radius: 16px; padding: 24px; background: var(--planner-surface, var(--surface)); }
+.network-analytics-account-heading { flex-wrap: wrap; }
+.network-analytics h3 { margin: 0; font-size: 18px; line-height: 1.4; overflow-wrap: anywhere; }
+.network-analytics-account-heading > span { font-size: 12px; color: var(--planner-muted, var(--muted)); }
+.network-analytics-note { margin: 10px 0 22px; max-width: 85ch; color: var(--planner-muted, var(--muted)); font-size: 13px; line-height: 1.7; }
+.network-analytics-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 0; }
+.network-analytics-metric { min-width: 0; padding: 18px; border: 1px solid var(--planner-line, var(--line)); border-radius: 12px; background: var(--planner-bg, var(--background)); }
+.network-analytics-metric dt { color: var(--planner-muted, var(--muted)); font-size: 13px; line-height: 1.5; }
+.network-analytics-metric dd { margin: 10px 0 0; color: var(--planner-text, var(--text)); font-size: 30px; font-weight: 750; line-height: 1.2; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.network-analytics-empty { font-size: 14px; line-height: 1.7; color: var(--planner-muted, var(--muted)); }
+.network-analytics-empty strong { color: var(--planner-text, var(--text)); }
+.network-analytics-empty p { margin: 8px 0; }
+.network-analytics-empty a { display: inline-block; margin-top: 8px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 640px) {
+  .network-analytics-heading { align-items: flex-start; flex-wrap: wrap; }
+  .network-analytics-account { padding: 16px; }
+  .network-analytics-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .network-analytics-metric { padding: 14px; }
+  .network-analytics-metric dd { font-size: 25px; }
+}
+@media (max-width: 360px) { .network-analytics-metrics { grid-template-columns: 1fr; } }
+.network-analytics h2, .network-analytics h3 { color: var(--planner-text, var(--text)); }

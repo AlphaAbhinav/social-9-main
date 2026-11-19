@@ -1,0 +1,66 @@
+/* Shared brand primitives for the public site and every workspace route. */
+:root {
+  --s9-canvas:#050507; --s9-panel:#0b0a12; --s9-raised:#11101a;
+  --s9-border:#2a2338; --s9-text:#f5f2f8; --s9-muted:#aaa7b4;
+  --s9-accent:#c784e5; --s9-tint:rgba(169,88,207,.10);
+  --s9-action:linear-gradient(105deg,#8e44ad,#245dff);
+  --s9-highlight:radial-gradient(circle at 95% 0,rgba(169,88,207,.12),transparent 55%),var(--s9-panel);
+  --s9-radius:16px; --s9-control-radius:10px;
+  --planner-bg:var(--s9-canvas); --planner-surface:var(--s9-panel); --planner-cell:var(--s9-panel);
+  --planner-line:var(--s9-border); --planner-text:var(--s9-text); --planner-muted:var(--s9-muted);
+  --planner-idea:var(--s9-tint); --planner-rose:var(--s9-tint); --planner-blue:rgba(36,93,255,.1); --planner-accent:var(--s9-accent);
+}
+html[data-theme="light"] {
+  --s9-canvas:#f7f5fb; --s9-panel:#fff; --s9-raised:#f2edf8;
+  --s9-border:#e1d8ec; --s9-text:#251735; --s9-muted:#675a76;
+  --s9-accent:#8140a3; --s9-tint:rgba(142,68,173,.07);
+}
+/* The calendar is a normal homepage section, with the same heading and CTA. */
+html .neon-site .public-calendar{width:var(--site-width);margin:0 auto;padding:var(--section-space) 0;border:0;border-radius:0;background:transparent;color:var(--s9-text);font-family:inherit}
+html .neon-site .public-calendar-heading{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:32px}
+html .neon-site .public-calendar h2{font-size:clamp(34px,3.8vw,58px);font-weight:500;line-height:1.12;letter-spacing:-.045em;margin:20px 0 0;color:var(--s9-text)}
+html .neon-site .public-calendar h2 em{color:var(--s9-accent)}
+html .neon-site .public-calendar-heading>p{font-size:16px;line-height:1.7;max-width:520px;color:var(--s9-muted)}
+html .neon-site .public-calendar .s9-product-preview{max-width:none;border:1px solid var(--s9-border);border-radius:20px;padding:20px;background:var(--s9-highlight)}
+html .neon-site .public-calendar .s9-calendar-demo{border:1px solid var(--s9-border);border-radius:var(--s9-radius);background:var(--s9-panel);color:var(--s9-text);transform:none;box-shadow:none;margin:0 0 26px;padding:24px}
+html .neon-site .public-calendar .s9-demo-heading h3{font-size:26px;font-weight:650;letter-spacing:-.04em;color:var(--s9-text)}
+html .neon-site .public-calendar :is(.s9-demo-days,.s9-demo-grid){grid-template-columns:repeat(7,minmax(0,1fr))}
+html .neon-site .public-calendar :is(.s9-demo-grid,.s9-demo-grid>div){border-color:var(--s9-border)}
+html .neon-site .public-calendar :is(.s9-demo-heading small,.s9-demo-days>span,.s9-demo-grid>div>small,.s9-preview-toolbar,.s9-preview-caption,.s9-calendar-note>span:last-child){color:var(--s9-muted)}
+html .neon-site .public-calendar .s9-calendar-note{transform:none}
+html .neon-site .public-calendar :is(.s9-demo-heading small,.s9-demo-days>span,.s9-demo-grid>div>small,.s9-preview-toolbar,.s9-preview-caption){font-size:11px}
+html .neon-site .public-calendar .s9-demo-badge{font-size:12px;border:1px solid var(--s9-border);background:var(--s9-tint);color:var(--s9-accent)}
+html .neon-site .public-calendar .s9-calendar-note{padding:12px 9px;min-height:78px;border:1px solid var(--s9-border);border-left:3px solid var(--s9-accent);border-radius:8px;background:var(--s9-tint)}
+html .neon-site .public-calendar .s9-calendar-note b{font-size:12px;font-weight:600;line-height:1.4}.public-calendar .s9-calendar-note>span:last-child{font-size:10px!important}
+html .neon-site .public-calendar .s9-floating-note{position:static;display:inline-flex;transform:none;box-shadow:none;background:var(--s9-tint);color:var(--s9-accent);border:1px solid var(--s9-border);border-radius:999px;font-size:12px;margin-top:18px;padding:9px 14px}
+html .neon-site .public-calendar-footer{font-size:14px;color:var(--s9-muted)}
+html .neon-site .public-calendar-footer a{background:var(--s9-action);color:white;border-radius:12px;font-size:14px;padding:13px 20px;min-height:44px}
+/* One hierarchy and surface treatment across all dashboard pages. */
+html .neon-app-shell{background:var(--s9-canvas)}
+html .neon-app-shell .neon-dashboard{background:transparent;color:var(--s9-text);font-family:inherit}
+html .neon-app-shell .dashboard-sidebar{background:var(--s9-canvas);border-color:var(--s9-border)}
+html .neon-app-shell .neon-dashboard :is(.dashboard-header,.neon-dashboard-top){border-bottom:1px solid var(--s9-border);padding-bottom:20px;margin-bottom:0}
+html .neon-app-shell .neon-dashboard :is(.dashboard-header h1,.neon-dashboard-top h1){font-size:clamp(28px,3vw,38px);font-weight:700;letter-spacing:-.045em;line-height:1.15;color:var(--s9-text)}
+html .neon-app-shell .neon-dashboard :is(.dashboard-header p,.neon-dashboard-top p){font-size:14px;line-height:1.65;color:var(--s9-muted)}
+html .neon-app-shell .neon-dashboard :is(.composer-card,.saved-posts-card,.drafts-card,.post-detail-card,.template-card,.provider-card,.library-post-card,.action-card,.trend-card,.channel-card,.top-content-card,.neon-dark-card,.neon-feature-card,.provider-insights-card,.analytics-suggestions,.billing-plan-card,.getting-started){border:1px solid var(--s9-border);border-radius:var(--s9-radius);background:var(--s9-highlight);color:var(--s9-text);box-shadow:none}
+html .neon-app-shell .neon-dashboard :is(.calendar-toolbar,.library-toolbar,.template-toolbar,.brief-disclosure,.composer-assist-disclosure,.studio-disclosure){background:var(--s9-panel);border-color:var(--s9-border);color:var(--s9-text)}
+html .neon-app-shell .neon-dashboard :is(.header-action-link,.primary-composer-button,.library-create-link,.template-card-footer a,.connect-button,.billing-plan-card .primary-button,.ai-calendar-controls>button,.ai-assist-button){background:var(--s9-action);color:#fff;border:0;border-radius:var(--s9-control-radius);box-shadow:none;min-height:42px;font-size:13px;font-weight:650}
+html .neon-app-shell .neon-dashboard :is(.secondary-button,.refresh-actions-button,.analytics-action){background:var(--s9-raised);border:1px solid var(--s9-border);color:var(--s9-text);border-radius:var(--s9-control-radius);min-height:40px;font-size:13px}
+html .neon-app-shell .neon-dashboard :is(input:not([type="checkbox"]):not([type="file"]),textarea,.ui-select-trigger){background:var(--s9-canvas);border-color:var(--s9-border);color:var(--s9-text);border-radius:var(--s9-control-radius);font-family:inherit;font-size:14px}
+html .neon-app-shell .neon-dashboard :is(.eyebrow,.template-goal){color:var(--s9-accent);font-size:11px;font-weight:700;letter-spacing:.08em}
+html .neon-app-shell .neon-dashboard :is(.calendar-studio-heading,.billing-hero-card,.neon-focus-card){background:var(--s9-highlight);border-color:var(--s9-border)}
+html .neon-app-shell .neon-dashboard .calendar-studio-heading h2{font-size:22px;font-weight:650;letter-spacing:-.04em}
+html .neon-app-shell .neon-dashboard .calendar-layout{background:var(--s9-raised);border-color:var(--s9-border)}
+html .neon-app-shell .neon-dashboard :is(.calendar-card,.weekday-row,.calendar-day){background:var(--s9-panel);border-color:var(--s9-border)}
+html .neon-app-shell .neon-dashboard .calendar-day.outside{background:var(--s9-canvas)}
+html .neon-app-shell .neon-dashboard :is(.content-plan-idea,.calendar-post){background:var(--s9-tint);border-color:var(--s9-border);border-left-color:var(--s9-accent);color:var(--s9-text)}
+html .neon-app-shell .neon-dashboard .calendar-post.linkedin{background:rgba(36,93,255,.1);border-left-color:#7798ff}
+html .neon-app-shell .neon-dashboard .calendar-post.instagram{border-left-color:#df90ca}
+html .neon-app-shell .neon-dashboard :is(.template-idea-preview,.studio-shortcuts a,.action-summary article,.billing-growth-estimates article){background:var(--s9-highlight);border:1px solid var(--s9-border);border-radius:12px;color:var(--s9-text)}
+html .neon-app-shell .neon-dashboard .template-idea-preview>strong{font-size:26px;font-weight:650}
+html .neon-app-shell .neon-dashboard :is(.template-caption,.template-results-heading,.template-card-footer>span,.library-card-meta,.business-brief-note){font-size:12px;color:var(--s9-muted)}
+html .neon-app-shell .neon-dashboard .billing-plan-card{--plan-text:var(--s9-text);--plan-muted:var(--s9-muted);--plan-line:var(--s9-border);--plan-accent:var(--s9-accent)}
+html .neon-app-shell .neon-dashboard .billing-plan-card.recommended{border-color:var(--s9-accent);background:var(--s9-highlight)}
+html .neon-app-shell .neon-dashboard :is(button,a,summary):focus-visible{outline:2px solid var(--s9-accent);outline-offset:3px}
+@media(max-width:900px){html .neon-site .public-calendar-heading{grid-template-columns:1fr;gap:20px}}
+@media(max-width:700px){html .neon-site .public-calendar{padding:48px 0;width:calc(100% - 32px)}html .neon-site .public-calendar .s9-product-preview{padding:12px;overflow-x:auto}html .neon-site .public-calendar .s9-calendar-demo{padding:16px;min-width:620px}.public-calendar-footer{align-items:stretch}}

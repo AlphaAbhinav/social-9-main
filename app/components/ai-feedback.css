@@ -1,0 +1,9 @@
+.ai-feedback{margin:18px 0 0;padding:16px;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:12px;min-width:0}
+.ai-feedback legend{padding:0 6px;font-weight:600;font-size:14px}
+.ai-feedback p,.ai-feedback label{font-size:13px;line-height:1.5}
+.ai-feedback-choices{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ai-feedback button{padding:8px 12px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:8px;background:transparent;color:inherit;cursor:pointer;font:inherit;font-size:13px}
+.ai-feedback button[aria-pressed="true"]{background:color-mix(in srgb,currentColor 12%,transparent);outline:2px solid currentColor;outline-offset:1px}
+.ai-feedback textarea{display:block;box-sizing:border-box;width:100%;margin:8px 0;padding:10px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:8px;background:transparent;color:inherit;font:inherit;resize:vertical}
+.ai-feedback button:focus-visible,.ai-feedback textarea:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.ai-feedback:disabled{opacity:.7}

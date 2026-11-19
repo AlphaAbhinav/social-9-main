@@ -1,0 +1,41 @@
+.landing-motion { overflow-x: clip; }
+.landing-motion .neon-plans-head h2 em { color: #c784e5; }
+html[data-theme="light"] .landing-motion .neon-plans-head h2 em { color: #8950a5; }
+.motion-word-mask { display: inline-block; overflow: clip; vertical-align: bottom; padding-block: .12em; margin-block: -.12em; }
+.motion-word { display: inline-block; transform-origin: left bottom; }
+.motion-word-mask:not(:last-child) { margin-right: .22em; }
+.landing-motion .neon-feature-card { perspective: 900px; }
+.landing-motion .neon-card-visual, .landing-motion .neon-platform-visual { transform-style: preserve-3d; }
+.landing-scroll-progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 100; pointer-events: none; background: linear-gradient(90deg,#b883ed,#5676ff,#e3b3ff); transform: scaleX(0); transform-origin: left; }
+.landing-motion .neon-hero { position: relative; perspective: 1400px; isolation: isolate; }
+.landing-hero-orbit { position: absolute; z-index: -1; width: clamp(260px,42vw,620px); aspect-ratio: 1; right: -15%; top: 30px; border: 1px solid #b785e438; border-radius: 50%; pointer-events: none; }
+.landing-hero-orbit::before, .landing-hero-orbit::after { content: ""; position: absolute; inset: 12%; border: 1px solid #7384ef30; border-radius: 50%; }
+.landing-hero-orbit::after { inset: 27%; border-color: #dba8f040; }
+.landing-hero-orbit i { position: absolute; width: 20px; height: 20px; top: 14%; left: 14%; border-radius: 50%; background: #c784e5; box-shadow: 0 0 35px #c784e566; }
+.landing-motion-ribbon { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; min-height: 65vh; padding: clamp(48px,7vw,100px) 0; overflow: clip; border-block: 1px solid #b785e425; background: #100c19; }
+.landing-motion-ribbon .ribbon-line-two { margin-left: 8%; }
+.landing-motion-ribbon small { position: relative; margin-top: 45px; text-align: center; font-size: 10px; letter-spacing: .3em; color: #cbb6e0; }
+.ribbon-flower { position: absolute; z-index: -1; width: min(54vw,600px); aspect-ratio: 1; left: 50%; top: 50%; translate: -50% -50%; fill: none; stroke: #9973dc; stroke-width: .5; opacity: .45; }
+html[data-theme="light"] .landing-motion-ribbon { background: #eee5fa; }
+html[data-theme="light"] .landing-motion-ribbon span { color: #734a9a; }
+html[data-theme="light"] .landing-motion-ribbon small { color: #674e80; }
+@media (max-width: 999px) {
+  .landing-motion-ribbon { min-height: 350px; }
+  .ribbon-flower { width: 320px; }
+}
+.landing-motion-ribbon span { display: block; width: max-content; margin-left: -8%; color: #b98bd9; font-size: clamp(48px,9vw,140px); font-weight: 650; line-height: 1.1; letter-spacing: -.06em; white-space: nowrap; }
+.landing-motion-ribbon em { font-style: normal; color: transparent; -webkit-text-stroke: 1px #ab8ac4; }
+.landing-motion .neon-workflow li { position: relative; }
+.landing-motion .neon-workflow li::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg,#ce97ed,#416bff); transform: scaleX(var(--step-progress,1)); transform-origin: left; }
+.landing-motion .neon-final { position: relative; isolation: isolate; overflow: clip; }
+.landing-final-halo { position: absolute; z-index: -1; width: min(750px,95%); aspect-ratio: 1; left: 50%; top: 50%; translate: -50% -50%; border: 1px solid #b980ea35; border-radius: 43%; pointer-events: none; }
+.landing-final-halo::before { content: ""; position: absolute; inset: 12%; border: 1px solid #7384ef30; border-radius: 43%; }
+@media (min-width: 1000px) and (prefers-reduced-motion: no-preference) {
+  .landing-motion .neon-workflow-inner { align-items: start; }
+  .landing-motion .neon-workflow-inner > div { position: sticky; top: 110px; }
+  .landing-motion .neon-workflow li { min-height: 195px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-scroll-progress { display: none; }
+  .landing-motion *, .landing-motion *::before, .landing-motion *::after { animation: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,105 @@
+/* Remaining workspace routes share the calendar and template studio surfaces. */
+html .neon-app-shell .dashboard-studio{color:var(--planner-text)}
+html .dashboard-studio :is(.provider-card,.library-post-card,.action-card,.action-summary article,.provider-insights-card,.trend-card,.channel-card,.top-content-card,.analytics-suggestions,.growth-planner,.instagram-scorecard article,.analytics-kpis article,.neon-dark-card,.neon-feature-card,.neon-metric-strip>article){background:var(--planner-surface);border:1px solid var(--planner-line);border-radius:16px;box-shadow:none}
+html .dashboard-studio :is(.provider-card,.action-card,.provider-insights-card,.trend-card,.channel-card,.top-content-card,.analytics-suggestions,.growth-planner,.neon-dark-card,.neon-feature-card){padding:20px}
+html .dashboard-studio :is(.provider-heading h2,.action-card h2,.analytics-card-heading h2,.growth-planner h2,.panel-heading h2,.feature-card-heading h2,.neon-agenda h2,.channel-card h2){font-size:19px;line-height:1.3;letter-spacing:-.4px;color:var(--planner-text);margin:5px 0}
+html .dashboard-studio :is(.provider-copy>p,.action-card-copy>p,.growth-planner-heading p,.neon-focus-copy>p){color:var(--planner-muted);font-size:13px;line-height:1.65}
+html .dashboard-studio :is(.provider-grid,.action-summary,.analytics-main-grid,.analytics-lower-grid,.neon-control-grid,.neon-growth-grid,.neon-lower-grid){gap:16px;margin-top:20px}
+html .dashboard-studio :is(.library-toolbar,.live-analytics-banner,.oauth-note){background:var(--planner-surface);border:1px solid var(--planner-line);border-radius:14px;padding:16px;color:var(--planner-muted)}
+html .dashboard-studio .library-toolbar{grid-template-columns:minmax(200px,1fr) minmax(140px,.45fr) minmax(140px,.45fr)}
+html .dashboard-studio .library-toolbar label{color:var(--planner-muted);font-size:11px}
+html .dashboard-studio .library-toolbar input{background:var(--planner-bg);border-color:var(--planner-line);color:var(--planner-text);font-size:13px}
+html .dashboard-studio .library-summary{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;padding:0;border:0;background:none;box-shadow:none}
+html .dashboard-studio .library-summary>span{display:flex;gap:8px;align-items:center;border:1px solid var(--planner-line);background:var(--planner-surface);border-radius:999px;padding:8px 13px;color:var(--planner-muted);font-size:12px}
+html .dashboard-studio .library-summary strong{font-size:14px;color:var(--planner-text)}
+html .dashboard-studio .content-library-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;align-items:start}
+html .dashboard-studio .library-post-card{padding:14px;min-width:0}
+html .dashboard-studio .library-card-media{height:170px;border-radius:10px;margin-top:12px}
+html .dashboard-studio .library-card-text-mark{height:110px;min-height:0;border-radius:10px;background:var(--planner-idea);color:var(--planner-accent);margin-top:12px}
+html .dashboard-studio .library-post-card>p{font-size:13px;line-height:1.65;color:var(--planner-text);min-height:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:14px 0}
+.library-caption-detail summary{font-size:12px;color:var(--planner-accent);cursor:pointer}.library-caption-detail p{font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--planner-text)}
+html .dashboard-studio .library-card-meta{gap:6px;color:var(--planner-muted);font-size:11px;border-color:var(--planner-line)}
+html .dashboard-studio .library-card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+html .dashboard-studio .library-card-actions button{min-height:36px;font-size:11px;padding:8px 10px}
+html .dashboard-studio .provider-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+html .dashboard-studio .provider-card{display:flex;flex-direction:column;gap:14px;min-height:0;position:relative;overflow:hidden}
+html .dashboard-studio .provider-card:before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a76dcc,#e18cac)}
+html .dashboard-studio .provider-card:nth-child(2):before{background:linear-gradient(90deg,#778ede,#9f77cf)}
+html .dashboard-studio .provider-icon{width:44px;height:44px;border-radius:12px;font-size:20px}
+html .dashboard-studio .provider-copy{width:100%;min-width:0}
+html .dashboard-studio .provider-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+html .dashboard-studio .connected-profile{padding:12px;margin-top:12px;background:var(--planner-bg);border-color:var(--planner-line);border-radius:10px;gap:10px;flex-wrap:wrap}
+html .dashboard-studio .connected-profile strong{color:var(--planner-text);overflow-wrap:anywhere}
+html .dashboard-studio :is(.connect-button,.connect-another-button){min-height:40px;margin-top:16px;border-radius:10px;font-size:12px}
+html .dashboard-studio .studio-disclosure{background:var(--planner-surface);border:1px solid var(--planner-line);border-radius:14px;margin-top:20px;padding:0}
+.studio-disclosure>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;color:var(--planner-text);font-size:13px;font-weight:600;list-style:none;cursor:pointer}
+.studio-disclosure>summary::-webkit-details-marker{display:none}.studio-disclosure>summary small{display:block;margin-top:5px;font-size:12px;font-weight:400;color:var(--planner-muted)}
+.studio-disclosure[open]>summary{border-bottom:1px solid var(--planner-line)}.studio-disclosure[open]>summary>span:last-child{transform:rotate(45deg)}
+html .dashboard-studio .oauth-note p{font-size:12px;line-height:1.7;margin:14px 20px;color:var(--planner-muted)}
+html .dashboard-studio .action-summary{margin-bottom:18px}
+html .dashboard-studio .action-summary article{padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:6px}
+html .dashboard-studio .action-summary article strong{grid-column:2;grid-row:1/3;font-size:32px;align-self:center;color:var(--planner-text)}
+html .dashboard-studio .action-summary article small{color:var(--planner-muted);font-size:11px}
+html .dashboard-studio .action-summary article>span{font-size:12px;color:var(--planner-text)}
+html .dashboard-studio .action-summary article:first-child{background:var(--planner-idea)}
+html .dashboard-studio .action-card{grid-template-columns:4px minmax(0,1fr) auto;gap:16px;padding:16px}
+html .dashboard-studio .action-card h2{font-size:16px;margin:7px 0}
+html .dashboard-studio .action-card>a{font-size:12px;border-radius:10px;padding:11px 14px}
+html .dashboard-studio .action-list{gap:12px}
+html .dashboard-studio .analytics-header-actions{flex-wrap:wrap;gap:8px}
+html .dashboard-studio .live-analytics-banner{margin-top:18px;font-size:12px;line-height:1.65}
+html .dashboard-studio :is(.instagram-scorecard,.analytics-kpis){gap:12px;margin:18px 0;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+html .dashboard-studio :is(.instagram-scorecard,.analytics-kpis) article{padding:16px;min-width:0}
+html .dashboard-studio :is(.instagram-scorecard,.analytics-kpis) article strong{font-size:29px;line-height:1.2;color:var(--planner-text)}
+html .dashboard-studio :is(.instagram-scorecard,.analytics-kpis) article>span{font-size:12px;color:var(--planner-muted)}
+html .dashboard-studio :is(.instagram-scorecard,.analytics-kpis) article small{font-size:11px;color:var(--planner-muted)}
+html .dashboard-studio .analytics-card-heading{gap:14px;flex-wrap:wrap}
+html .dashboard-studio .instagram-connect-state{padding:22px;margin-top:18px;border-radius:16px;background:var(--planner-idea);border-color:var(--planner-line)}
+html .dashboard-studio .instagram-connect-state h2{font-size:25px;color:var(--planner-text)}
+html .dashboard-studio .instagram-connect-state p{font-size:13px;color:var(--planner-muted)}
+html .dashboard-studio .analytics-planning-tools .growth-planner{margin:16px;border-radius:12px;padding:16px;background:var(--planner-bg)}
+html .dashboard-studio .growth-planner-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+html .dashboard-studio .growth-planner-form button{min-height:40px;align-self:end}
+html .dashboard-studio .instagram-performance-list>article{border-radius:12px;background:var(--planner-surface);border-color:var(--planner-line);padding:12px;gap:12px}
+html .dashboard-studio .analytics-suggestions{margin-top:20px}
+html .dashboard-studio .billing-hero-card{padding:20px;margin-top:20px;min-height:0;background:var(--planner-idea);border:1px solid var(--planner-line);border-radius:16px;gap:20px}
+html .dashboard-studio .billing-hero-card h2{font-size:25px;line-height:1.25;max-width:680px;color:var(--planner-text)}
+html .dashboard-studio .billing-hero-card p{font-size:13px;line-height:1.65;color:var(--planner-muted);max-width:720px}
+html .dashboard-studio .billing-lock-icon{width:58px;height:58px;font-size:28px;flex-shrink:0}
+html .dashboard-studio .billing-growth-estimates{gap:12px;margin-top:16px}
+html .dashboard-studio .billing-growth-estimates article{padding:12px 16px;background:var(--planner-surface);border-color:var(--planner-line);border-radius:12px}
+html .dashboard-studio .billing-growth-estimates strong{font-size:22px;color:var(--planner-text)}
+html .neon-workspace-page.dashboard-studio .billing-plan-grid{gap:16px;margin-top:20px}
+html .neon-workspace-page.dashboard-studio .billing-plan-card{padding:20px;border-radius:16px;background:var(--planner-surface);border-color:var(--planner-line);box-shadow:none}
+html .neon-workspace-page.dashboard-studio .billing-plan-card.recommended{background:var(--planner-idea);border-color:var(--planner-accent)}
+html .dashboard-studio .billing-plan-card h2{font-size:22px}
+html .dashboard-studio .billing-price{font-size:36px;margin:12px 0}
+html .dashboard-studio .billing-plan-card li{font-size:12px;line-height:1.7}
+html .dashboard-studio .billing-note{font-size:12px;line-height:1.65;color:var(--planner-muted)}
+html .overview-studio .neon-dashboard-top{gap:18px;align-items:center;margin-bottom:16px}
+html .overview-studio .neon-dashboard-top h1{font-size:clamp(28px,3vw,38px);line-height:1.15;color:var(--planner-text)}
+html .overview-studio .neon-metric-strip{gap:12px;margin-top:18px}
+html .overview-studio .neon-metric-strip>article{padding:16px}
+html .overview-studio .neon-metric-strip strong{font-size:30px;color:var(--planner-text)}
+.studio-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.studio-shortcuts a{display:block;border:1px solid var(--planner-line);background:var(--planner-idea);color:var(--planner-text);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+.studio-shortcuts a:nth-child(2){background:var(--planner-idea)}.studio-shortcuts a:nth-child(3){background:var(--planner-idea)}
+.studio-shortcuts a>span{font-size:9px;letter-spacing:.08em;color:var(--planner-muted)}.studio-shortcuts strong{display:flex;justify-content:space-between;gap:8px;font-size:14px;margin-top:8px;font-weight:600}
+html .overview-studio .neon-control-grid{grid-template-columns:minmax(200px,.8fr) minmax(260px,1.1fr) minmax(230px,1fr);align-items:stretch}
+html .overview-studio .neon-focus-card{min-height:0;background:var(--planner-idea)}
+html .overview-studio .neon-focus-copy h2{font-size:27px;line-height:1.2;color:var(--planner-text)}
+html .overview-studio .neon-focus-foot{gap:14px;margin-top:18px;flex-wrap:wrap}
+html .overview-studio .neon-date strong{font-size:38px}
+html .overview-studio .neon-reco-list article{padding:12px 0}
+html .overview-studio .neon-reco-list strong{font-size:13px;color:var(--planner-text)}
+html .overview-studio .neon-reco-list p{font-size:12px;line-height:1.6;color:var(--planner-muted)}
+html .overview-studio .neon-channel-card{min-height:0}
+html .overview-studio .neon-upcoming{margin-top:18px}
+html .overview-studio .getting-started{padding:18px;margin:18px 0;border-radius:16px;background:var(--planner-surface);border-color:var(--planner-line)}
+html .overview-studio .getting-started h2{font-size:21px;color:var(--planner-text)}
+html .overview-studio .getting-started li{padding:14px}
+html .dashboard-studio :is(button,a,summary):focus-visible{outline:2px solid var(--planner-accent);outline-offset:3px}
+@media(max-width:1250px){html .overview-studio .neon-control-grid{grid-template-columns:1fr 1fr}html .overview-studio .neon-reco-panel{grid-column:1/-1}html .overview-studio .neon-reco-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media(max-width:900px){html .dashboard-studio .provider-grid{grid-template-columns:1fr}html .dashboard-studio .library-toolbar{grid-template-columns:1fr 1fr}html .dashboard-studio .library-search{grid-column:1/-1}html .overview-studio .neon-control-grid{grid-template-columns:1fr}html .overview-studio .neon-reco-panel{grid-column:auto}.studio-shortcuts{grid-template-columns:1fr}html .dashboard-studio .action-card{grid-template-columns:4px minmax(0,1fr)}html .dashboard-studio .action-card>a{grid-column:2;justify-self:start}}
+@media(max-width:600px){html .dashboard-studio :is(.action-summary,.billing-growth-estimates){grid-template-columns:1fr}html .dashboard-studio :is(.library-toolbar,.growth-planner-form){grid-template-columns:1fr}html .overview-studio .neon-reco-list{grid-template-columns:1fr}html .dashboard-studio .billing-hero-card h2{font-size:22px}html .dashboard-studio .billing-lock-icon{display:none}html .dashboard-studio :is(.provider-card,.trend-card,.channel-card,.top-content-card,.analytics-suggestions,.neon-dark-card,.neon-feature-card){padding:16px}}
+@media(prefers-reduced-motion:reduce){.studio-shortcuts a{transition:none}}

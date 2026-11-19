@@ -1,0 +1,11 @@
+.coupon-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.coupon-editor fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.coupon-editor label { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.coupon-page select { padding: 10px; width: 100%; border: 1px solid var(--admin-line); border-radius: 6px; background: var(--admin-surface); color: var(--admin-ink); }
+.coupon-editor .coupon-check { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.coupon-editor .coupon-check input { width: auto; }
+.coupon-checks { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; text-transform: capitalize; }
+.coupon-full { grid-column: 1 / -1; }
+.coupon-page td p { margin: 7px 0; font-size: 12px; }
+.coupon-history { scroll-margin-top: 20px; }
+@media (max-width: 640px) { .coupon-form-grid { grid-template-columns: 1fr; } }

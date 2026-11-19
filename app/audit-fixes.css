@@ -1,0 +1,46 @@
+/* Audit corrections use the shared surface and text palette. */
+html .neon-brand-copy strong { color: var(--s9-text, #f5f2f8); }
+html[data-theme="light"] .neon-brand-copy strong { color: #211a27; }
+html .neon-app-shell :is(.library-empty,.content-plan-banner,.composer-card,.post-detail-card,.platform-option,.ai-assist-result,.ai-calendar-panel) { background: var(--s9-panel); color: var(--s9-text); border-color: var(--s9-border); }
+html .neon-app-shell :is(.library-empty,.content-plan-banner,.composer-card,.post-detail-card,.platform-option) :is(h2,h3,strong,label) { color: var(--s9-text); }
+html .neon-app-shell :is(.library-empty,.content-plan-banner,.composer-card,.post-detail-card,.platform-option) :is(p,small) { color: var(--s9-muted); }
+html .dashboard-sidebar :is(.nav-item,.sidebar-signout,.theme-toggle,.ui-select-trigger) { color: var(--s9-text); }
+html .dashboard-sidebar .nav-item-active { background: var(--s9-tint); color: var(--s9-accent); }
+.plan-intent-summary { margin: 18px 0; border: 1px solid var(--s9-border); border-radius: 12px; padding: 16px; background: var(--s9-panel); color: var(--s9-text); }
+.plan-intent-summary p { font-size: 14px; line-height: 1.6; color: var(--s9-muted); }
+html .billing-option.is-selected { outline: 3px solid var(--s9-accent); outline-offset: 3px; }
+.skip-link { position: fixed; top: 8px; left: 8px; transform: translateY(-160%); z-index: 1000; background: var(--s9-panel); color: var(--s9-text); padding: 14px; border: 2px solid var(--s9-accent); }
+.skip-link:focus { transform: none; }
+.skip-link:not(:focus) { clip-path: inset(50%); pointer-events: none; }
+html .discover-section :is(.discover-note,.discover-caption,.discover-credit) { font-size: 14px; }
+@media(max-width: 1000px) {
+  html .neon-app-shell .dashboard-sidebar { display: grid; grid-template-columns: minmax(0,1fr) auto; position: relative; padding: 12px 16px; gap: 12px; z-index: 120; }
+  html .neon-app-shell .dashboard-menu-toggle { display: inline-flex; min-width: 88px; min-height: 44px; padding: 10px 14px; align-items: center; gap: 10px; background: var(--s9-raised); color: var(--s9-text); border: 1px solid var(--s9-border); border-radius: 10px; margin: 0; }
+  html .neon-app-shell .dashboard-menu-toggle b { display: inline; font-size: 14px; }
+  html .neon-app-shell .dashboard-sidebar .brand-switcher { width: 100%; min-width: 0; grid-column: 1; margin: 0; }
+  html .neon-app-shell .dashboard-sidebar-footer { grid-column: 2; grid-row: 2; display: flex; padding: 0; margin: 0; gap: 6px; }
+  html .neon-app-shell .dashboard-sidebar-footer .theme-toggle { min-width: 44px; min-height: 44px; padding: 6px; }
+  html .neon-app-shell .dashboard-sidebar-footer .theme-toggle > span:last-child:not(.theme-toggle-icon) { display: none; }
+  html .neon-app-shell .sidebar-signout { min-height: 44px; padding: 8px; }
+  html .neon-app-shell .dashboard-sidebar nav { display: none; position: absolute; inset: calc(100% + 4px) 8px auto; max-height: calc(100dvh - 145px); overflow-y: auto; overscroll-behavior: contain; padding: 12px; border: 1px solid var(--s9-border); border-radius: 12px; background: var(--s9-panel); box-shadow: 0 12px 30px #0004; margin: 0; }
+  html .neon-app-shell .dashboard-sidebar.mobile-menu-open nav { display: flex; flex-direction: column; }
+  html .neon-app-shell .dashboard-sidebar nav .nav-item { min-height: 44px; display: flex; align-items: center; flex-shrink: 0; }
+  html .neon-public-header { padding: 12px; gap: 12px; }
+  html .neon-public-header nav { display: none; }
+  html .neon-header-actions .neon-signin { display: inline-flex; min-height: 44px; align-items: center; padding: 8px; font-size: 14px; }
+  html .neon-header-actions { gap: 4px; }
+  html .neon-nav-cta { min-height: 44px; padding: 5px 6px 5px 12px; font-size: 13px; }
+  html .neon-public-header .neon-brand-copy small { display: none; }
+  html .neon-site .neon-section { padding-top: 40px; padding-bottom: 40px; }
+  html .neon-site .discover-grid { display: grid; grid-auto-flow: column; grid-auto-columns: min(85vw,320px); grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; }
+  html .neon-site .discover-card { scroll-snap-align: start; }
+}
+@media(max-width: 375px) { html .neon-public-header .neon-brand-copy { display: none; } }
+
+.public-feature-page { max-width: 800px; margin: 0 auto; padding: 48px 24px; color: var(--s9-text); }
+.public-feature-page h1 { font-size: clamp(32px,6vw,52px); line-height: 1.15; margin: 32px 0 20px; }
+.public-feature-page section { margin: 32px 0; }
+.public-feature-page p { font-size: 17px; line-height: 1.8; color: var(--s9-muted); }
+.public-feature-page a { color: var(--s9-accent); }
+
+html .content-plan-idea[aria-pressed="true"] { outline: 2px solid var(--s9-accent); outline-offset: 2px; }

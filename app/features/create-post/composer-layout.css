@@ -1,0 +1,124 @@
+.composer-content .dashboard-header { padding-bottom:24px; }
+.composer-content .dashboard-header h1 { font-size:clamp(28px,3vw,42px); margin:10px 0; }
+.composer-content .dashboard-header p { font-size:14px; margin:0; }
+.composer-content .composer-template-link { margin-top:10px; font-size:12px; }
+html .neon-workspace-page.composer-content .composer-layout,.composer-content .composer-layout { grid-template-columns:minmax(0,1.25fr) minmax(340px,.85fr); margin-top:24px; gap:22px; }
+.composer-content .composer-card { padding:24px; min-width:0; }
+.composer-content .composer-card textarea { min-height:140px; padding:14px; }
+.composer-content .ai-assist-hint { font-size:12px; line-height:1.5; margin:10px 0 16px; }
+.composer-content .composer-format { display:flex; align-items:center; gap:14px; }
+.composer-content .composer-format > label { flex-shrink:0; margin:0; }
+.composer-content .composer-format > button { flex:1; }
+.composer-content .platform-fieldset { margin-top:20px; }
+.composer-content .platform-options { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.composer-content .platform-option { gap:8px; padding:10px; border-radius:11px; }
+.composer-content .platform-option .mini-provider { width:23px; height:23px; }
+.composer-content .platform-option small { display:none; }
+.composer-content .platform-option:has(input:disabled) { opacity:.4; cursor:not-allowed; }
+.composer-content .platform-option:focus-within { outline:2px solid #9868ef; outline-offset:2px; }
+.composer-content .composer-row { margin-top:16px; }
+.composer-content .composer-channel-account { grid-template-columns:minmax(0,1fr); }
+.composer-field { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.composer-field > label { font-size:12px; font-weight:700; }
+.composer-field > label span { font-weight:400; color:var(--muted); }
+.composer-field .ui-select-trigger { width:100%; min-width:0; }
+.composer-content .composer-field > input { width:100%; min-height:44px; border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--surface,#fff); color:inherit; font:inherit; font-size:13px; }
+.composer-content .composer-field > input:focus-visible { outline:2px solid #9868ef; outline-offset:2px; }
+.composer-field-hint { margin:0; color:var(--muted); font-size:12px; line-height:1.5; }
+.composer-field-hint a { color:inherit; text-decoration:underline; }
+.composer-channel-settings { min-width:0; margin:20px 0 0; padding:16px; border:1px solid var(--line); border-radius:14px; }
+.composer-channel-settings legend { display:flex; align-items:center; gap:8px; padding:0 6px; font-size:13px; font-weight:750; }
+.composer-channel-settings legend svg { width:20px; height:20px; }
+.composer-settings-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.composer-field-wide { grid-column:1/-1; }
+.composer-checkbox { display:flex; align-items:flex-start; gap:10px; font-size:12px; line-height:1.5; cursor:pointer; }
+.composer-checkbox input { flex-shrink:0; width:16px; height:16px; margin-top:2px; accent-color:#9868ef; }
+@media(max-width:600px) { .composer-settings-grid { grid-template-columns:minmax(0,1fr); } }
+.composer-content .composer-upload-row { grid-template-columns:1fr; }
+.composer-content .upload-control { min-height:94px; align-items:center; text-align:center; padding:16px; }
+.composer-content .upload-control input { max-width:280px; font-size:12px; }
+.composer-content .composer-assist-disclosure { margin-top:16px; }
+.composer-content .composer-actions { margin-top:20px; padding-top:16px; flex-wrap:wrap; }
+.composer-side { display:flex; flex-direction:column; gap:18px; min-width:0; position:sticky; top:22px; }
+.composer-side .post-preview { margin:0; padding:20px; background:var(--surface,transparent); }
+.composer-side .post-preview-media img,.composer-side .post-preview-media video { max-height:320px; }
+.composer-side .post-preview-card.preview-vertical { max-width:240px; }
+.composer-side .preview-vertical .post-preview-media img,.composer-side .preview-vertical .post-preview-media video { max-height:380px; }
+.composer-content .composer-schedule { padding:20px; border:1px solid var(--line); border-radius:18px; background:var(--surface,transparent); }
+.composer-panel-heading { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.composer-panel-heading h2 { margin:5px 0 0; font-size:20px; }
+.composer-panel-heading > span { width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(135,88,236,.12); font-size:23px; color:#9868ef; }
+.schedule-quick { display:flex; gap:8px; margin-bottom:14px; }
+.schedule-quick button { background:transparent; color:inherit; border:1px solid var(--line); border-radius:20px; padding:7px 12px; font:inherit; font-size:12px; cursor:pointer; }
+.schedule-date-trigger { display:flex; align-items:center; gap:12px; text-align:left; width:100%; border:1px solid var(--line); border-radius:12px; padding:12px; background:transparent; color:inherit; cursor:pointer; }
+.schedule-date-trigger > span:nth-child(2) { flex:1; }
+.schedule-date-trigger small { display:block; opacity:.65; margin-bottom:4px; font-size:11px; }
+.schedule-date-trigger strong { font-size:13px; }
+.schedule-calendar { margin-top:12px; border:1px solid var(--line); border-radius:14px; padding:14px; }
+.schedule-month { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; font-size:13px; }
+.schedule-month button { border:1px solid var(--line); border-radius:8px; background:transparent; color:inherit; width:30px; height:30px; cursor:pointer; font-size:20px; }
+.schedule-days { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:4px; text-align:center; }
+.schedule-days > span { padding:6px 0; font-size:11px; opacity:.65; }
+.schedule-days button { min-height:34px; border:1px solid transparent; border-radius:8px; background:transparent; color:inherit; font:inherit; font-size:12px; cursor:pointer; }
+.schedule-days button:hover:not(:disabled) { background:rgba(135,88,236,.15); }
+.schedule-days button[aria-pressed=true] { background:#8758ec; color:white; }
+.schedule-days button.is-today { border-color:#8758ec; }
+.schedule-days button:disabled,.schedule-month button:disabled { opacity:.25; cursor:default; }
+.schedule-time { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; font-size:12px; }
+.schedule-time > div { display:flex; align-items:center; gap:8px; }
+.schedule-time > div > button { width:72px; min-width:0; }
+.schedule-timezone { margin:12px 0 0; font-size:11px; line-height:1.5; opacity:.65; }
+.schedule-invalid { font-size:12px; color:#e15c74; }
+.composer-content .composer-recent { padding:0; }
+.composer-recent > summary { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:18px 20px; cursor:pointer; font-weight:750; font-size:14px; list-style:none; }
+.composer-recent > summary span { font-size:12px; opacity:.65; }
+.composer-recent .saved-posts-list { margin:0; padding:0 18px 18px; max-height:340px; overflow:auto; }
+.composer-recent .empty-posts { padding:0 20px 18px; margin:0; }
+@media(min-width:1600px) { .composer-content .platform-options { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+html[data-theme="dark"] .composer-side :is(.post-preview,.post-preview-card,.composer-schedule,.schedule-date-trigger,.schedule-calendar,.schedule-quick button,.schedule-month button,.post-preview-platforms button) { border-color:rgba(255,255,255,.13); }
+@media(max-width:1100px) { html .neon-workspace-page.composer-content .composer-layout,.composer-content .composer-layout { grid-template-columns:minmax(0,1fr) minmax(300px,.8fr); gap:16px; } .composer-content .composer-card { padding:18px; } .composer-content .platform-options { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:850px) { html .neon-workspace-page.composer-content .composer-layout,.composer-content .composer-layout { grid-template-columns:1fr; } .composer-side { position:static; } .composer-content .composer-actions { justify-content:stretch; } .composer-content .composer-actions button { flex:1; } }
+@media(max-width:480px) { .composer-content .composer-format { display:block; } .composer-content .composer-format label { margin-bottom:8px; } .composer-content .platform-options { grid-template-columns:repeat(2,minmax(0,1fr)); } .composer-content .composer-actions button { flex:1 1 100%; } .composer-side .post-preview-heading { flex-wrap:wrap; } }
+
+/* Recent content spans both columns; scheduling opens from its action button. */
+html .neon-workspace-page.composer-content .composer-recent { grid-column:1/-1; padding:20px; }
+.composer-recent .recent-posts-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
+.composer-recent .recent-posts-heading h2 { margin:0; font-size:20px; }
+.composer-recent .recent-posts-heading a { color:inherit; font-size:12px; opacity:.7; }
+html .neon-workspace-page.composer-content .composer-recent .saved-posts-list { display:flex; flex-direction:row; gap:14px; overflow-x:auto; overflow-y:hidden; margin:0; padding:0 0 8px; max-height:none; }
+.composer-recent .saved-posts-list li { flex:0 0 300px; min-width:0; }
+.composer-recent .saved-posts-list li > small,.composer-recent .saved-posts-list time { display:block; margin-top:8px; line-height:1.5; }
+.composer-recent .saved-posts-list li > small { font-size:11px; }
+html .neon-workspace-page.composer-content .upload-control { position:relative; display:flex; flex-direction:row; align-items:center; justify-content:flex-start; gap:14px; text-align:left; padding:18px; }
+.upload-control .upload-symbol { flex-shrink:0; display:grid; place-items:center; width:40px; height:40px; border-radius:12px; background:rgba(135,88,236,.13); color:#9868ef; font-size:24px; }
+.upload-control .upload-copy { flex:1; min-width:0; }
+.upload-control .upload-copy strong { display:block; font-size:13px; }
+.upload-control .upload-copy small { display:block; font-size:11px; line-height:1.5; }
+.upload-control .upload-choose { flex-shrink:0; border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:12px; }
+html .neon-workspace-page.composer-content .upload-control input { position:absolute; width:1px; height:1px; opacity:0; margin:0; padding:0; }
+.upload-control:focus-within { outline:2px solid #9868ef; outline-offset:3px; }
+.composer-schedule-dialog { position:fixed; width:min(460px,calc(100vw - 32px)); max-height:calc(100dvh - 40px); margin:auto; overflow:auto; padding:24px; border:1px solid var(--line); border-radius:22px; background:#fff; color:#251e35; box-shadow:0 24px 100px rgba(0,0,0,.35); }
+.composer-schedule-dialog::backdrop { background:rgba(10,7,18,.7); backdrop-filter:blur(4px); }
+.composer-schedule-dialog[open] { display:flex; flex-direction:column; overflow:hidden; }
+.schedule-dialog-body { min-height:0; overflow:auto; padding-right:4px; }
+.composer-schedule-dialog .composer-schedule { border:0; padding:0; }
+.composer-schedule-dialog .composer-panel-heading { padding-right:24px; }
+.schedule-dialog-close { position:absolute; top:16px; right:16px; width:30px; height:30px; border:0; border-radius:8px; background:transparent; color:inherit; font-size:24px; cursor:pointer; }
+.schedule-dialog-actions { display:flex; flex-shrink:0; justify-content:flex-end; gap:10px; margin-top:20px; padding-top:16px; border-top:1px solid var(--line); }
+.schedule-dialog-error { color:#df5974; font-size:12px; }
+.schedule-time select { width:72px; border:1px solid var(--line); border-radius:10px; background:transparent; color:inherit; padding:10px; font:inherit; }
+.schedule-time option { background:#fff; color:#251e35; }
+html[data-theme="dark"] .composer-schedule-dialog { color:#f5f2ff; background:#14101d; border-color:rgba(255,255,255,.13); }
+html[data-theme="dark"] .composer-schedule-dialog :is(.schedule-date-trigger,.schedule-calendar,.schedule-month button,.schedule-quick button,.schedule-time select,.schedule-dialog-actions) { border-color:rgba(255,255,255,.13); }
+html[data-theme="dark"] .upload-choose { border-color:rgba(255,255,255,.13); }
+.composer-content .media-list li { grid-template-columns:auto minmax(0,1fr) auto auto; width:min(100%,360px); max-width:none; gap:10px; padding:12px; background:#f2eff8; color:#251e35; border:1px solid #ddd4e8; border-radius:12px; }
+.composer-content .media-list li strong { font-size:12px; color:inherit; }
+.composer-content .media-list li span { font-size:10px; }
+.composer-content .media-list li button { min-width:30px; min-height:32px; color:#62536f; border-radius:7px; }
+.composer-content .media-list li button:focus-visible { outline:2px solid #a677ec; outline-offset:2px; }
+html[data-theme="dark"] .composer-content .media-list li { background:#1b1525; border-color:#493950; color:#f5f1fa; }
+html[data-theme="dark"] .composer-content .media-list li span { color:#cfa9ff; }
+html[data-theme="dark"] .composer-content .media-list li button { color:#c8bdd3; }
+@media(max-width:600px) { html .neon-workspace-page.composer-content .upload-control { flex-wrap:wrap; } .upload-control .upload-copy { flex-basis:calc(100% - 60px); } .upload-control .upload-choose { margin-left:54px; } .composer-recent .recent-posts-heading { flex-wrap:wrap; } .composer-recent .saved-posts-list li { flex-basis:270px; } }
+
+.composer-content .media-list li > span img { display:block; width:64px; height:64px; object-fit:cover; border-radius:6px; }

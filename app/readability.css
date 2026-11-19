@@ -1,0 +1,152 @@
+﻿/* Shared sizing for the public site and authenticated workspace.
+   Keep color and theme rules in theme.css; these tokens only control layout. */
+.neon-site {
+  --site-width: min(90%, 1500px);
+  --site-gutter: max(5%, calc((100% - 1500px) / 2));
+  --section-space: clamp(64px, 6vw, 100px);
+  --body-size: clamp(16px, 1.05vw, 18px);
+}
+.neon-site .neon-section,
+.neon-site .neon-workflow-inner,
+.neon-site .neon-plans-inner,
+.neon-site .neon-footer {
+  width: var(--site-width);
+  max-width: none;
+  margin-inline: auto;
+  padding-block: var(--section-space);
+}
+.neon-site .neon-public-header { padding-inline: var(--site-gutter); gap: 20px; }
+.neon-site .neon-hero { min-height: 0; padding: var(--section-space) var(--site-gutter) 0; }
+.neon-site .neon-capability-track { padding: 28px var(--site-gutter); }
+.neon-site .neon-about { padding: var(--section-space) var(--site-gutter); margin-block: 0; gap: clamp(32px, 4vw, 64px); }
+.neon-site .neon-final { padding: var(--section-space) var(--site-gutter); }
+.neon-site .neon-hero h1 { max-width: 1150px; font-size: clamp(42px, 5.4vw, 82px); line-height: 1.08; }
+.neon-site :is(.neon-section h2,.neon-workflow h2,.neon-plans-head h2,.neon-about-copy h2,.neon-final h2) {
+  font-size: clamp(34px, 3.8vw, 58px);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+.neon-site :is(.neon-hero > p,.neon-section-intro p,.neon-workflow p,.neon-plans-head > p,.neon-about-copy > p,.neon-final > p) {
+  font-size: var(--body-size);
+  line-height: 1.75;
+}
+.neon-site .neon-hero > p { max-width: 760px; }
+.neon-site :is(.neon-section-intro,.neon-plans-head) { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.neon-site :is(.neon-section-intro p,.neon-plans-head > p) { max-width: 50ch; margin: 0; }
+.neon-site .neon-feature-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin-top: 40px; }
+.neon-site .neon-feature-card { min-width: 0; min-height: 0; padding: clamp(24px,2.3vw,36px); }
+.neon-site .neon-feature-card:first-child { grid-column: auto; }
+.neon-site .neon-feature-card h3 { font-size: clamp(23px,1.9vw,29px); line-height: 1.25; max-width: none; }
+.neon-site .neon-feature-card p { font-size: 16px; line-height: 1.7; opacity: 1; }
+.neon-site .neon-workflow-inner { grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); gap: clamp(32px,6vw,96px); }
+.neon-site .neon-workflow li { padding-block: 26px; }
+.neon-site .neon-workflow li h3 { font-size: 22px; line-height: 1.3; }
+.neon-site .neon-workflow li p { font-size: 16px; max-width: 48ch; }
+.neon-site :is(.neon-cta,.neon-signin,.neon-text-link,.neon-plan-button) { font-size: 15px; min-height: 46px; }
+.neon-site .neon-public-header nav a { font-size: 14px; padding-inline: 12px; }
+.neon-site .neon-brand-copy small { font-size: 11px; letter-spacing: .07em; }
+.neon-site .neon-nav-cta strong { font-size: 14px; }
+.neon-site .neon-nav-cta small { font-size: 11px; }
+.neon-site :is(.neon-section-label,.neon-kicker,.neon-feature-card > span,.neon-growth-disclaimer,.neon-footer-bottom) { font-size: 13px; line-height: 1.5; }
+.neon-site .neon-product-preview { width: 100%; max-width: none; transform: none; margin: 48px auto 0; }
+.neon-site .neon-preview-body { grid-template-columns: minmax(0,1fr) minmax(250px,.4fr); }
+.neon-site .neon-preview-center { grid-template-columns: minmax(220px,.65fr) minmax(0,1fr); }
+.neon-site :is(.neon-preview-top small,.neon-preview-search,.neon-preview-metrics small,.neon-today-card > small,.neon-today-card li small,.neon-recommendations small,.neon-preview-tile small,.neon-spotlight small,.neon-spotlight span) { font-size: 13px; line-height: 1.5; }
+.neon-site :is(.neon-today-card li strong,.neon-recommendations p) { font-size: 14px; line-height: 1.55; white-space: normal; }
+.neon-site .neon-signal-strip div { font-size: 12px; flex-wrap: wrap; gap: 14px 28px; }
+.neon-site .neon-preview-metrics article { padding: 18px; }
+.neon-site .neon-preview-metrics strong { font-size: 34px; }
+.neon-site :is(.neon-price-card > span,.neon-plan-price small,.neon-plan-total small,.neon-growth-proof span) { font-size: 13px; line-height: 1.5; }
+.neon-site .neon-footer { padding-bottom: 32px; }
+.neon-site :is(.neon-footer > div p,.neon-footer nav a) { font-size: 15px; line-height: 1.7; }
+.neon-site .neon-footer nav strong { font-size: 13px; }
+/* Keep principle text readable and stationary rather than orbiting over other copy. */
+.neon-site .neon-about-system { min-height: 0; display: grid; gap: 16px; align-content: center; }
+
+/* Dashboard and all DashboardPageFrame screens share one readable scale. */
+.neon-app-shell { grid-template-columns: 230px minmax(0,1fr); }
+.neon-app-shell .neon-dashboard { width: 100%; max-width: none; min-width: 0; padding: clamp(24px,3vw,48px); }
+.neon-app-shell .neon-dashboard :is(p,label,legend) { font-size: 15px; line-height: 1.65; }
+.neon-app-shell .neon-dashboard :is(small,dt,dd,time) { font-size: 13px; line-height: 1.5; }
+.neon-app-shell .neon-dashboard :is(button,input,select,textarea) { font-size: 14px; }
+.neon-app-shell .neon-dashboard textarea { font-size: 16px; line-height: 1.6; }
+.neon-app-shell .neon-dashboard :is(.dashboard-header h1,.neon-dashboard-top h1) { font-size: clamp(30px,3vw,44px); line-height: 1.15; }
+.neon-app-shell .neon-dashboard :is(.panel-heading h2,.neon-agenda h2,.provider-heading h2) { font-size: 22px; line-height: 1.3; }
+.neon-app-shell .neon-dashboard :is(.eyebrow,.post-status,.connection-state,.live-data-pill,.ai-preview-badge,.billing-status,.local-mode-badge) { font-size: 12px; line-height: 1.45; }
+.neon-app-shell .neon-dashboard :is(.neon-search,.neon-metric-strip span,.neon-date span,.neon-agenda-list strong,.neon-agenda-list small,.neon-reco-list strong,.neon-reco-list a,.neon-focus-foot a,.neon-channel-head > span:last-child,.panel-heading a,.header-action-link,.library-create-link) { font-size: 14px; line-height: 1.5; }
+.neon-app-shell .neon-dashboard :is(.neon-agenda-list strong,.neon-reco-list strong) { white-space: normal; overflow-wrap: anywhere; }
+.neon-app-shell .neon-dashboard .neon-metric-strip article { min-width: 0; min-height: 115px; padding: 20px; gap: 12px; }
+.neon-app-shell .neon-dashboard .neon-metric-strip strong { font-size: 36px; }
+.neon-app-shell .neon-dashboard .neon-control-grid { grid-template-columns: minmax(230px,.8fr) minmax(0,1.5fr); gap: 20px; }
+.neon-app-shell .neon-dashboard .neon-reco-panel { grid-column: 1/-1; }
+.neon-app-shell .neon-dashboard .neon-reco-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 24px; }
+.neon-app-shell .neon-dashboard :is(.neon-lower-grid,.neon-channels,.provider-grid,.composer-layout,.library-grid) { gap: 20px; }
+.neon-app-shell .neon-dashboard :is(.neon-agenda,.neon-reco-panel,.neon-pipeline,.neon-upcoming,.provider-card) { padding: 24px; }
+.neon-app-shell .neon-dashboard .neon-focus-copy h2 { font-size: clamp(28px,3vw,42px); line-height: 1.15; }
+.neon-app-shell .neon-dashboard .neon-focus-copy > span { font-size: 12px; }
+.neon-app-shell .neon-dashboard .neon-focus-foot .momentum-dial small { font-size: 10px; }
+.neon-app-shell .neon-dashboard .neon-focus-foot .momentum-dial { flex-shrink: 0; }
+.neon-app-shell .neon-dashboard :is(.calendar-toolbar,.library-toolbar,.dashboard-header,.neon-dashboard-top) { gap: 20px; flex-wrap: wrap; }
+.neon-app-shell .neon-dashboard :is(.delivery-row,.performance-row,.library-card-meta,.channel-copy small,.channel-list dt,.channel-list dd) { font-size: 14px; }
+.neon-app-shell .neon-dashboard :is(.delivery-head,.performance-head,.chart-legend,.trend-column small,.operations-column small,.provider-bar-column small) { font-size: 12px; }
+.neon-app-shell .neon-dashboard :is(.calendar-post time,.calendar-post span,.day-posts > small,.content-plan-idea time,.content-plan-idea span) { font-size: 12px; line-height: 1.4; }
+.neon-app-shell .neon-dashboard :is(.content-idea-facts small,.content-idea-note strong,.ai-premium-lock a,.billing-growth-estimates span) { font-size: 13px; }
+.neon-app-shell .neon-dashboard .content-plan-idea { min-height: 44px; height: auto; }
+.neon-app-shell .neon-dashboard .content-plan-idea span { white-space: normal; }
+@media (max-width: 1180px) {
+  .neon-site .neon-public-header { flex-wrap: wrap; height: auto; min-height: 88px; padding-block: 16px; }
+  .neon-site .neon-public-header nav { order: 3; width: 100%; display: flex; justify-content: center; }
+  .neon-site .neon-preview-body { grid-template-columns: 1fr; }
+  .neon-site .neon-recommendations { display: block; }
+  .neon-site .neon-recommendations article { grid-template-columns: 1fr; }
+  .neon-site .neon-recommendations i { display: none; }
+}
+@media (max-width: 900px) {
+  .neon-site :is(.neon-section-intro,.neon-plans-head,.neon-workflow-inner,.neon-about) { grid-template-columns: 1fr; gap: 28px; }
+  .neon-site .neon-feature-grid { grid-template-columns: 1fr; }
+  .neon-site .neon-feature-card h3 { margin-top: 24px; }
+  .neon-app-shell .neon-dashboard .neon-control-grid { grid-template-columns: 1fr; }
+  .neon-app-shell .neon-dashboard .neon-lower-grid { grid-template-columns: 1fr; }
+  .neon-app-shell .neon-dashboard .neon-metric-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 860px) {
+  .neon-app-shell { display: block; }
+  .neon-app-shell .neon-dashboard { padding: 24px; }
+}
+@media (max-width: 620px) {
+  .neon-site { --site-width: calc(100% - 40px); --site-gutter: 20px; --section-space: 64px; }
+  .neon-site .neon-public-header { gap: 12px; }
+  .neon-site .neon-public-header nav { gap: 0; flex-wrap: wrap; border-radius: 14px; }
+  .neon-site .neon-public-header nav a { padding: 9px 8px; font-size: 13px; }
+  .neon-site .neon-header-actions { gap: 6px; }
+  .neon-site .neon-nav-cta { min-width: 110px; padding-inline: 10px; }
+  .neon-site .neon-brand-copy strong { font-size: 18px; }
+  .neon-site .neon-hero h1 { font-size: clamp(36px,9vw,48px); }
+  .neon-site .neon-product-preview { padding: 14px; }
+  .neon-site .neon-preview-top { grid-template-columns: 1fr; }
+  .neon-site .neon-preview-actions { display: none; }
+  .neon-site .neon-preview-center { grid-template-columns: 1fr; }
+  .neon-site .neon-preview-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .neon-site .neon-preview-metrics article { padding: 14px 10px; grid-template-columns: 1fr; gap: 8px; }
+  .neon-site .neon-mini-graph { display: none; }
+  .neon-site .neon-preview-bottom { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .neon-site .neon-pricing-grid { grid-template-columns: 1fr; }
+  .neon-site .neon-footer { gap: 30px; }
+  .neon-site .neon-footer nav { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+  .neon-site .neon-footer nav a { overflow-wrap: anywhere; }
+  .neon-app-shell .neon-dashboard { padding: 20px 16px; }
+  .neon-app-shell .neon-dashboard :is(.neon-reco-list,.neon-channels) { grid-template-columns: 1fr; }
+  .neon-app-shell .neon-dashboard .neon-metric-strip article { padding: 14px; }
+  .neon-app-shell .neon-dashboard .neon-metric-strip strong { font-size: 30px; }
+}
+
+/* Compact labels still need a legible minimum size. */
+.neon-app-shell .brand-switcher > span { font-size: 12px; }
+.neon-app-shell .neon-dashboard :is(.composer-label > span,.upload-control > span,.schedule-control > span,.weekday-row > span,.day-number,.template-results-heading > span,.template-goal,.template-tags > span,.template-card-footer > span) { font-size: 13px; line-height: 1.5; }
+.neon-app-shell .neon-dashboard .template-card-footer a { font-size: 14px; min-height: 40px; display: inline-flex; align-items: center; }
+.neon-app-shell .neon-dashboard .template-card-footer { flex-wrap: wrap; gap: 12px; }
+.neon-app-shell .neon-dashboard .template-tags { flex-wrap: wrap; }
+.neon-site .neon-pricing-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+@media (max-width: 900px) {
+  .neon-site .neon-pricing-grid { grid-template-columns: 1fr; }
+}

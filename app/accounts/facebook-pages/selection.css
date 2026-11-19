@@ -1,0 +1,16 @@
+.facebook-page-selection { max-width: 760px; margin-top: 32px; }
+.facebook-page-selection fieldset { min-width: 0; border: 0; padding: 0; margin: 0; }
+.facebook-page-selection legend { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.facebook-page-selection p { color: var(--muted, #aaa3b1); line-height: 1.6; margin: 12px 0 20px; }
+.facebook-page-options { display: grid; gap: 12px; }
+.facebook-page-option { display: flex; align-items: center; gap: 16px; border: 1px solid rgba(162,133,207,.3); border-radius: 16px; padding: 18px; cursor: pointer; }
+.facebook-page-option:has(input:checked) { border-color: #a78bfa; background: rgba(139,92,246,.12); }
+.facebook-page-option:focus-within { outline: 2px solid #a78bfa; outline-offset: 3px; }
+.facebook-page-option.is-unavailable { opacity: .65; cursor: default; }
+.facebook-page-option input { width: 20px; height: 20px; flex-shrink: 0; accent-color: #8b5cf6; }
+.facebook-page-option .social-brand-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.facebook-page-option span { display: grid; gap: 6px; overflow-wrap: anywhere; }
+.facebook-page-option small { color: var(--muted, #aaa3b1); }
+.facebook-selection-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.facebook-selection-actions button { min-height: 44px; }
+@media (max-width: 560px) { .facebook-page-option { gap: 12px; padding: 14px; } .facebook-selection-actions button { width: 100%; } }

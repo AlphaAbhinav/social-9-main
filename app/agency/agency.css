@@ -1,0 +1,353 @@
+.agency-page {
+  max-width: 1600px;
+}
+.agency-workspaces {
+  display: flex;
+  gap: 16px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.agency-page label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.agency-page input,
+.agency-page select,
+.agency-page textarea {
+  padding: 12px;
+  border: 1px solid var(--s9-border);
+  border-radius: 10px;
+  background: var(--dropdown-bg);
+  color: inherit;
+  font: inherit;
+  min-width: 0;
+}
+.agency-page textarea {
+  resize: vertical;
+}
+.agency-role,
+.agency-state {
+  padding: 8px 14px;
+  border-radius: 24px;
+  background: #748aff22;
+  color: inherit;
+  white-space: nowrap;
+}
+.agency-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.agency-tabs button {
+  border: 1px solid #687c9433;
+  border-radius: 12px;
+  padding: 13px 18px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.agency-tabs .selected {
+  background: #5c4fe4;
+  color: white;
+}
+.agency-body {
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  margin: 0;
+}
+.agency-card {
+  background: var(--s9-panel);
+  border: 1px solid var(--s9-border);
+  padding: 26px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+.agency-card h2 {
+  font-size: 22px;
+  margin: 8px 0 14px;
+}
+.agency-card p {
+  line-height: 1.65;
+  opacity: 0.85;
+}
+.agency-intro {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.agency-intro > div {
+  max-width: 750px;
+}
+.agency-intro > strong {
+  font-size: 32px;
+  min-width: 160px;
+  text-align: right;
+}
+.agency-intro small,
+.agency-comparison small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+.agency-form {
+  display: grid;
+  gap: 16px;
+}
+.agency-inline {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+}
+.agency-inline button {
+  justify-self: start;
+}
+.agency-wide {
+  grid-column: 1/-1;
+}
+.agency-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.agency-actions button,
+.agency-actions a {
+  font-size: 13px;
+}
+.agency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.agency-grid .agency-card {
+  margin: 0;
+}
+.agency-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.agency-metrics {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.agency-metrics strong {
+  display: block;
+  font-size: 24px;
+}
+.agency-metrics span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+.agency-comparison {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 140px;
+  gap: 24px;
+  align-items: center;
+  margin: 24px 0;
+}
+.agency-comparison span {
+  display: block;
+  opacity: 0.6;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.agency-comparison > strong {
+  text-align: right;
+  font-size: 18px;
+}
+.agency-bar {
+  height: 12px;
+  border-radius: 10px;
+  background: #748aff18;
+  overflow: hidden;
+}
+.agency-bar i {
+  display: block;
+  min-height: 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #8071ed, #49cfa7);
+}
+.agency-three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.agency-empty {
+  padding: 30px;
+  text-align: center;
+  opacity: 0.7;
+}
+.agency-caption {
+  white-space: pre-wrap;
+  font-size: 17px;
+}
+.agency-page details {
+  margin-top: 18px;
+  border-top: 1px solid #748aff26;
+  padding-top: 18px;
+  font-size: 13px;
+}
+.agency-page summary {
+  cursor: pointer;
+}
+.agency-member-list {
+  padding: 0;
+  list-style: none;
+}
+.agency-member-list li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #748aff26;
+}
+.agency-member-list span {
+  opacity: 0.65;
+  flex: 1;
+}
+.state-approved {
+  background: #49cfa725;
+}
+.state-changes_requested {
+  background: #f8ac4425;
+}
+.report-preview {
+  margin-top: 24px;
+}
+.report-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+.report-preview th,
+.report-preview td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #748aff26;
+  vertical-align: top;
+}
+.report-preview td:last-child {
+  white-space: pre-wrap;
+}
+.agency-body:disabled {
+  opacity: 0.65;
+}
+.agency-page a {
+  color: inherit;
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .agency-grid,
+  .agency-inline {
+    grid-template-columns: 1fr;
+  }
+  .agency-comparison {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+  .agency-comparison > strong {
+    grid-column: 2;
+    text-align: left;
+  }
+  .agency-intro {
+    flex-direction: column;
+  }
+  .agency-intro > strong {
+    text-align: left;
+  }
+  .agency-member-list li {
+    flex-wrap: wrap;
+  }
+  .agency-tabs button {
+    flex: 1;
+  }
+  .agency-card {
+    padding: 20px;
+  }
+  .agency-three {
+    grid-template-columns: 1fr;
+  }
+  .report-preview {
+    overflow: auto;
+  }
+}
+@media print {
+  .dashboard-shell,
+  .dashboard-content,
+  .agency-body {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .dashboard-sidebar,
+  .agency-page > :not(.agency-body),
+  .agency-body > :not(.report-preview) {
+    display: none !important;
+  }
+  body * {
+    visibility: hidden !important;
+  }
+  .report-preview,
+  .report-preview * {
+    visibility: visible !important;
+  }
+  .report-preview {
+    position: static !important;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    border: 0;
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+  }
+  .report-print-button {
+    display: none !important;
+  }
+  .report-preview td,
+  .report-preview th {
+    border-color: #ccc;
+  }
+  .report-preview tr {
+    break-inside: avoid;
+  }
+  .report-preview h1 {
+    font-size: 28px;
+  }
+  .report-preview table {
+    font-size: 11px;
+  }
+}
+
+.agency-public-post {
+  padding: 16px 0;
+  border-bottom: 1px solid #748aff26;
+}
+.agency-public-post a {
+  font-weight: 600;
+}
+.agency-public-post p {
+  margin: 8px 0;
+}
+
+html .neon-app-shell .agency-page :is(input, select, textarea) {
+  background: var(--dropdown-bg);
+  color: var(--dropdown-text);
+  border-color: var(--dropdown-border);
+}
