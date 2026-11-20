@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { track } from "../lib/track";
 
 type Theme = "dark" | "light";
 
@@ -37,6 +38,7 @@ export function ThemeToggle({ compact = false }: { compact?: boolean }) {
     window.localStorage.setItem(STORAGE_KEY, nextTheme);
     applyTheme(nextTheme);
     window.dispatchEvent(new Event("social9-theme-change"));
+    track("theme_changed", { label: nextTheme });
   }
 
   const nextTheme = theme === "dark" ? "light" : "dark";

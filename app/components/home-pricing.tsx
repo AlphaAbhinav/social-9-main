@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "./link";
+import { track } from "../lib/track";
 import "./home-pricing.css";
 
 const durations = [
@@ -26,7 +27,7 @@ export function HomePricing() {
   return <section className="neon-plans home-pricing" id="plans" aria-labelledby="home-pricing-heading"><div className="neon-plans-inner">
     <div className="neon-section-label"><i /> PLANS & PRICING</div>
     <div className="home-pricing-heading"><div><h2 id="home-pricing-heading">Make room <em>for more.</em></h2><p>The right tools for your next stage. One payment, no auto-renewal.</p></div><span className="home-payment-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m12 3 8 3v6c0 4-8 9-8 9s-8-5-8-9V6l8-3Z" /><path d="m8 12 3 3 5-6" /></svg>Secure checkout by Razorpay</span></div>
-    <div className="home-pricing-toolbar"><div><h3>Find your fit</h3><p>Same features. A better daily rate when you stay longer.</p></div><div className="home-duration-picker" role="group" aria-label="Plan duration">{durations.map((item, index) => <button type="button" aria-label={item.label} aria-pressed={selected === index} onClick={() => setSelected(index)} key={item.label}>{item.label}{item.saving > 0 && <small>Save {item.saving}%</small>}</button>)}</div></div>
+    <div className="home-pricing-toolbar"><div><h3>Find your fit</h3><p>Same features. A better daily rate when you stay longer.</p></div><div className="home-duration-picker" role="group" aria-label="Plan duration">{durations.map((item, index) => <button type="button" aria-label={item.label} aria-pressed={selected === index} onClick={() => { setSelected(index); track("pricing_duration_select", { duration: ["monthly", "annual", "three_year"][index] }); }} key={item.label}>{item.label}{item.saving > 0 && <small>Save {item.saving}%</small>}</button>)}</div></div>
     <div className="home-plan-grid">{tiers.map((tier, index) => {
       const daily = tier.daily * duration.rate / 3;
       const total = daily * duration.days;

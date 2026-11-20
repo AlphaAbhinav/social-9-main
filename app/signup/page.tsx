@@ -10,6 +10,7 @@ import { apiRequest } from "../lib/api";
 import type { Social9User } from "../lib/api";
 import { getAccessToken } from "../lib/session";
 import { planDestination } from "../lib/plan-intent";
+import { track } from "../lib/track";
 
 type SignupResponse = {
   message: string;
@@ -35,6 +36,7 @@ export default function SignupPage() {
     setError("");
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
+      track("form_error", { form: "signup", reason: "password_mismatch" });
       return;
     }
     setIsSubmitting(true);
@@ -43,6 +45,7 @@ export default function SignupPage() {
         method: "POST",
         body: JSON.stringify({ name, email, password }),
       });
+      track("sign_up", { method: "email" });
       if (data.verification_token) {
         window.location.assign(
           `/verify-email?token=${encodeURIComponent(data.verification_token)}`,
@@ -52,6 +55,7 @@ export default function SignupPage() {
       setVerificationRequired(!data.user.is_verified);
       setMessage(data.message);
     } catch (signupError) {
+      track("form_error", { form: "signup", reason: "api_error" });
       setError(signupError instanceof Error ? signupError.message : "Unable to create account.");
     } finally {
       setIsSubmitting(false);

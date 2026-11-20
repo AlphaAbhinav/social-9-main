@@ -10,6 +10,7 @@ import { apiRequest } from "../lib/api";
 import type { Social9User } from "../lib/api";
 import { planDestination } from "../lib/plan-intent";
 import { getAccessToken, saveSession } from "../lib/session";
+import { track } from "../lib/track";
 
 type LoginResponse = {
   access_token: string;
@@ -44,8 +45,10 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       saveSession(data.access_token, data.user, rememberMe);
+      track("login", { method: "email" });
       window.location.assign(planDestination());
     } catch (loginError) {
+      track("form_error", { form: "login", reason: "api_error" });
       setError(
         loginError instanceof Error ? loginError.message : "We couldn't sign you in.",
       );

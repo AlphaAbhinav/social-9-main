@@ -2,6 +2,7 @@ import { siteOrigin, siteTitle, siteDescription } from "./lib/seo";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { BackendWarmup } from "./components/backend-warmup";
+import { ClickTracker } from "./components/click-tracker";
 import "./globals.css";
 import "./theme.css";
 import "./readability.css";
@@ -21,6 +22,34 @@ const themeScript = `(() => {
     document.documentElement.dataset.theme = "dark";
   }
 })();`;
+
+const GTM_ID = "GTM-K6PBH7VH";
+const META_PIXEL_ID = "1605123714199219";
+
+// Analytics run only on the live site, never on localhost or preview deployments.
+const isTrackedHost = (host: string | null | undefined) => /^(www\.)?social9\.io$/.test((host ?? "").split(":")[0]);
+
+// Google Tag Manager (GA4 is configured inside it) and the Meta Pixel.
+const trackingScript = `window.dataLayer = window.dataLayer || [];
+if (/^(www\\.)?social9\\.io$/.test(location.hostname)) {
+  try {
+    var s9User = JSON.parse(localStorage.getItem('social9_user') || sessionStorage.getItem('social9_user') || 'null');
+    dataLayer.push(s9User && s9User.id ? {user_id: String(s9User.id), logged_in: 'yes'} : {logged_in: 'no'});
+  } catch (e) {}
+  dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  (function(d){var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id=${GTM_ID}';d.head.appendChild(j);})(document);
+
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '${META_PIXEL_ID}');
+  fbq('track', 'PageView');
+}`;
 
 export function generateMetadata(): Metadata {
   const origin = siteOrigin();
@@ -42,7 +71,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const nonce = (await headers()).get("x-nonce") ?? undefined;
+  const requestHeaders = await headers();
+  const nonce = requestHeaders.get("x-nonce") ?? undefined;
+  const tracked = isTrackedHost(requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host"));
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -50,8 +81,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <link rel="shortcut icon" href="/social9-mark-v2-32.png" type="image/png" />
         <link rel="apple-touch-icon" href="/social9-mark-v2-180.png" />
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: trackingScript }} />
       </head>
-      <body><BackendWarmup />{children}</body>
+      <body>
+        {tracked && <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element -- Meta Pixel fallback must be a plain image. */}
+          <img height="1" width="1" style={{ display: "none" }} alt="" src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`} />
+        </noscript>}
+        <BackendWarmup /><ClickTracker />{children}</body>
     </html>
   );
 }

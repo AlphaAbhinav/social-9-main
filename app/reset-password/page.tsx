@@ -6,6 +6,7 @@ import Link from "../components/link";
 
 import { AuthShell } from "../components/auth-shell";
 import { apiRequest } from "../lib/api";
+import { track } from "../lib/track";
 
 type ActionResponse = { message: string };
 
@@ -54,6 +55,7 @@ export default function ResetPasswordPage() {
       window.sessionStorage.removeItem("social9-reset-code");
       setMessage(data.message);
       setComplete(true);
+      track("password_reset_completed");
     } catch (resetError) {
       setError(
         resetError instanceof Error

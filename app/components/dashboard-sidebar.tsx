@@ -10,6 +10,7 @@ import { Social9Mark } from "./social9-mark";
 import { ThemeToggle } from "./theme-toggle";
 import { clearSession, getAccessToken } from "../lib/session";
 import { apiRequest, getActiveBrandId, setActiveBrandId, Social9Brand } from "../lib/api";
+import { track } from "../lib/track";
 
 export type DashboardSection =
   | "dashboard"
@@ -75,6 +76,7 @@ export function DashboardSidebar({ active }: { active: DashboardSection }) {
   }
 
   function signOut() {
+    track("logout");
     clearSession();
     window.location.assign("/login");
   }

@@ -3,6 +3,7 @@ import { useId, useState } from "react";
 import { apiRequest } from "../lib/api";
 import { getAccessToken } from "../lib/session";
 import "./ai-feedback.css";
+import { track } from "../lib/track";
 
 export function AIFeedback({ generationId }: { generationId?: number | null }) {
   return generationId ? <FeedbackControls key={generationId} generationId={generationId} /> : null;
@@ -21,6 +22,7 @@ function FeedbackControls({ generationId }: { generationId: number }) {
     try {
       await apiRequest("/ai/feedback", { method: "POST", headers: { Authorization: `Bearer ${getAccessToken() ?? ""}` },
         body: JSON.stringify({ generation_id: generationId, rating, note }) });
+      track("ai_feedback", { label: rating });
       setMessage("Feedback saved. Future advice for this brand will use it.");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Could not save feedback. Try again.");

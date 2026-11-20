@@ -7,6 +7,7 @@ import { DashboardPageFrame } from "../components/dashboard-page-frame";
 import { useBilling } from "../features/billing/use-billing";
 import { CouponCheckout } from "../features/billing/coupon-checkout";
 import "./billing.css";
+import { track } from "../lib/track";
 
 function BillingIcon({ name }: { name: "check" | "arrow" | "shield" | "starter" | "advanced" | "agency" }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -57,7 +58,7 @@ export default function BillingPage() {
           <div><span className="billing-small-label">BRAND ALLOWANCE</span><strong>{brandCount} / {subscription.features.brand_limit ?? "Unlimited"} brands</strong><p>{subscription.features.brand_limit !== null && brandCount >= subscription.features.brand_limit ? "Your brand allowance is full. Choose a larger plan to add another brand." : "Each brand keeps its own connected accounts, content and templates."}</p></div>
           <ul><li>{subscription.features.competitor_limit} competitor profile{subscription.features.competitor_limit === 1 ? "" : "s"} per brand</li><li>{subscription.features.ai_assistant ? "AI caption and content assistance included" : "AI content assistance requires Starter or above"}</li><li>{subscription.features.growth_projection ? "Growth projections included" : "Growth projections require Advanced or Agency"}</li><li>{subscription.features.publishing_reports ? "Publishing reports and CSV exports included" : "Publishing reports require Advanced or Agency"}</li><li>{subscription.features.team_workspace ? `Up to ${subscription.features.team_member_limit} team members per brand, with draft approvals` : "Team members and draft approvals require Agency"}</li></ul>
         </section>
-        <div className="billing-section-heading"><div><h2>Find your fit</h2><p>Same features. A better daily rate when you stay longer.</p></div><div className="billing-duration-picker" role="group" aria-label="Access duration">{[["monthly", "1 month"], ["annual", "1 year"], ["three_year", "3 years"]].map(([value, label]) => { const saving = allPlans.find((plan) => plan.duration === value)?.savings_percent ?? 0; return <button type="button" key={value} aria-label={label} aria-pressed={duration === value} disabled={working} onClick={() => setDuration(value)}>{label}{saving > 0 && <small>Save {saving}%</small>}</button>; })}</div></div>
+        <div className="billing-section-heading"><div><h2>Find your fit</h2><p>Same features. A better daily rate when you stay longer.</p></div><div className="billing-duration-picker" role="group" aria-label="Access duration">{[["monthly", "1 month"], ["annual", "1 year"], ["three_year", "3 years"]].map(([value, label]) => { const saving = allPlans.find((plan) => plan.duration === value)?.savings_percent ?? 0; return <button type="button" key={value} aria-label={label} aria-pressed={duration === value} disabled={working} onClick={() => { setDuration(value); track("pricing_duration_select", { duration: value, location: "/billing" }); }}>{label}{saving > 0 && <small>Save {saving}%</small>}</button>; })}</div></div>
         <section className="billing-options" aria-label="Compare paid plans">
           {plans.map((plan) => {
             const tier = plan.tier as "starter" | "advanced" | "agency";
@@ -84,7 +85,7 @@ export default function BillingPage() {
                   : current && subscription.provider === "mock" ? <button type="button" disabled={working} onClick={() => void updateMockSubscription("cancel")}>{working ? "Updating…" : "Cancel current preview"}</button>
                   : <button type="button" disabled>{current ? "Your current plan" : "Available after your plan expires"}{current && <BillingIcon name="check" />}</button>
                   : subscription?.mock_mode ? <button type="button" disabled={working} onClick={() => void updateMockSubscription("subscribe", plan.code)}>{working ? "Enabling…" : `Preview ${plan.name}`}<BillingIcon name="arrow" /></button>
-                  : razorpayConfig?.enabled ? <button type="button" disabled={working} onClick={() => setCheckoutPlan(plan.code)}>{working ? "Opening checkout…" : `Choose ${plan.name}${razorpayConfig.test_mode ? " · Test" : ""}`}<BillingIcon name="arrow" /></button>
+                  : razorpayConfig?.enabled ? <button type="button" disabled={working} onClick={() => { if (!razorpayConfig.test_mode) track("begin_checkout", { plan: plan.code, duration: plan.duration, value: plan.total_price_inr, item: { id: plan.code, name: plan.name, price: plan.total_price_inr } }); setCheckoutPlan(plan.code); }}>{working ? "Opening checkout…" : `Choose ${plan.name}${razorpayConfig.test_mode ? " · Test" : ""}`}<BillingIcon name="arrow" /></button>
                   : <a href="mailto:visionarycue.informatics@gmail.com?subject=Social9%20Premium%20access">Request access<BillingIcon name="arrow" /></a>}
               </div>
               <div className="billing-features"><p>{copy.featureIntro}</p><ul>{features.map((feature) => <li key={feature}><BillingIcon name="check" /><span>{feature}</span></li>)}</ul></div>

@@ -10,12 +10,12 @@ export function proxy(request: Request) {
     : "";
   const policy = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://checkout.razorpay.com${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+    `script-src 'self' 'nonce-${nonce}' https://checkout.razorpay.com https://www.googletagmanager.com https://connect.facebook.net${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "media-src 'self' blob: https:",
     "font-src 'self' data:",
-    `connect-src 'self' ${apiOrigin} https://*.razorpay.com${developmentConnections}`,
+    `connect-src 'self' ${apiOrigin} https://*.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.facebook.com https://connect.facebook.net${developmentConnections}`,
     "frame-src https://*.razorpay.com",
     "object-src 'none'",
     "base-uri 'self'",

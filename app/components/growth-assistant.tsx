@@ -6,6 +6,7 @@ import { platformNames } from "../lib/provider-availability";
 import { apiRequest } from "../lib/api";
 import { getAccessToken } from "../lib/session";
 import "./growth-assistant.css";
+import { track } from "../lib/track";
 type Profile={description:string;audience:string;voice:string;goal:string};
 type Metric={metric:string;current:number|null;previous:number|null;change_percent:number|null};
 type Evidence={accounts?:{metrics:Record<string,number>;note:string}[];provider:string;top_posts:{id:string;caption:string;interactions:number;permalink?:string|null}[];comparisons:Metric[];reason?:string;note?:string;period?:{current_start:string;current_end:string;previous_start:string;previous_end:string}};
@@ -43,7 +44,7 @@ export function GrowthAssistant({unlocked}:{unlocked:boolean}) {
    if(generate){
     await apiRequest<Profile>("/ai/brand-profile",{method:"PUT",headers:auth(),body:JSON.stringify(profile)});
     const next=await apiRequest<Result>("/ai/assist",{method:"POST",headers:auth(),body:JSON.stringify({action:"strategy",platform})});
-    setResult(next);setContext(next.context);
+    setResult(next);setContext(next.context);track("growth_strategy_generated",{provider:platform});
    }else{setContext(await apiRequest<Context>(`/ai/growth-context?platform=${platform}`,{headers:auth()}));setResult(null);}
   }catch(e){setError(e instanceof Error?e.message:"Unable to review your growth plan.");}
   finally{setBusy("");}

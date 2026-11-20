@@ -13,6 +13,7 @@ import Link from "../components/link";
 import { API_URL, ApiError, apiRequest } from "../lib/api";
 import type { Provider, SavedPost } from "../lib/posts";
 import { clearSession, getAccessToken } from "../lib/session";
+import { track } from "../lib/track";
 
 type StatusFilter = "all" | SavedPost["status"];
 
@@ -126,6 +127,7 @@ export default function ContentLibraryPage() {
       });
       setEditing(null);
       setMessage("Post updated.");
+      track("post_edited");
       await loadPosts();
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Unable to update the post.");
@@ -144,6 +146,7 @@ export default function ContentLibraryPage() {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
+      track("post_duplicated", { location: "/content" });
       setMessage(post.status === "published" && !duplicateDraft.media_urls.length ? "A caption-only draft was created. Create a new post to attach media again." : "A reusable draft was created.");
       await loadPosts();
     } catch (requestError) {
@@ -163,6 +166,7 @@ export default function ContentLibraryPage() {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
+      track(result.status === "failed" ? "post_publish_failed" : "post_published", { platforms: post.platforms.join(","), location: "/content" });
       if (result.status === "failed") setError(result.publish_error ?? "The provider could not publish this post.");
       else setMessage((result.status === "publishing" || result.status === "scheduled") ? "Publishing is already in progress. Refresh shortly to check delivery." : Object.values(result.external_post_ids).some((id) => id.startsWith("preview:")) ? "Preview completed. No public post was sent to preview channels." : "Post published successfully.");
       await loadPosts();
@@ -186,6 +190,7 @@ export default function ContentLibraryPage() {
       });
       setPendingDelete(null);
       setMessage("Post deleted.");
+      track("post_deleted");
       await loadPosts();
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Unable to delete the post.");

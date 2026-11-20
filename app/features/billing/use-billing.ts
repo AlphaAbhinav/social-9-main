@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 import { ApiError, apiRequest, type Social9Brand } from "../../lib/api";
 import { clearSession, getAccessToken } from "../../lib/session";
+import { track } from "../../lib/track";
 import { loadRazorpayCheckout, checkoutErrorMessage, type RazorpaySuccess } from "./checkout";
 
 type PlanFeatures = {
@@ -72,6 +73,8 @@ type RazorpaySession = {
   test_mode: boolean;
 };
 
+type PurchaseInfo = { plan: string; duration?: string; coupon?: string; value: number; item: { id: string; name: string; price: number } };
+
 export function useBilling() {
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [brandCount, setBrandCount] = useState(0);
@@ -81,6 +84,11 @@ export function useBilling() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  // Razorpay test-mode payments are not real revenue, so they are kept out of GA4 and Meta.
+  function trackPayment(event: string, params: Parameters<typeof track>[1], testMode = razorpayConfig?.test_mode ?? true) {
+    if (!testMode) track(event, params);
+  }
 
   const unauthorized = useCallback(() => {
     clearSession();
@@ -100,6 +108,7 @@ export function useBilling() {
       setSubscription(nextSubscription);
       setRazorpayConfig(nextConfig);
       setBrandCount(brands.length);
+      if (!nextSubscription.is_paid) track("view_pricing", { label: "billing" });
     } catch (requestError) {
       if (requestError instanceof ApiError && requestError.status === 401) return unauthorized();
       setError(requestError instanceof Error ? requestError.message : "Unable to load subscription.");
@@ -135,7 +144,7 @@ export function useBilling() {
     }
   }
 
-  async function verifyRazorpayPayment(response: RazorpaySuccess, token: string) {
+  async function verifyRazorpayPayment(response: RazorpaySuccess, token: string, purchase: PurchaseInfo, testMode: boolean) {
     try {
       const updated = await apiRequest<Subscription>("/billing/razorpay/verify", {
         method: "POST",
@@ -143,9 +152,11 @@ export function useBilling() {
         body: JSON.stringify(response),
       });
       setSubscription(updated);
+      trackPayment("purchase", { ...purchase, transaction_id: response.razorpay_payment_id, currency: "INR" }, testMode);
       setMessage(updated.is_paid ? "Premium is active. Your paid features are unlocked." : "Payment verified. Paid access activation is pending confirmation.");
     } catch (requestError) {
       if (requestError instanceof ApiError && requestError.status === 401) return unauthorized();
+      trackPayment("payment_verification_failed", { plan: purchase.plan }, testMode);
       setError(requestError instanceof Error ? requestError.message : "Unable to verify the payment.");
     } finally {
       setWorking(false);
@@ -158,6 +169,9 @@ export function useBilling() {
     setWorking(true);
     setError("");
     setMessage("");
+    const plan = razorpayConfig?.plans.find((item) => item.code === planCode);
+    const value = expectedAmountMinor !== undefined ? expectedAmountMinor / 100 : plan?.total_price_inr ?? 0;
+    const purchase: PurchaseInfo = { plan: planCode, duration: plan?.duration, coupon: couponCode || undefined, value, item: { id: planCode, name: plan?.name ?? planCode, price: value } };
     try {
       if (expectedAmountMinor === 0 && couponCode) {
         const updated = await apiRequest<Subscription>("/billing/coupons/redeem", {
@@ -166,6 +180,7 @@ export function useBilling() {
           body: JSON.stringify({ plan_code: planCode, coupon_code: couponCode, expected_amount_minor: 0 }),
         });
         setSubscription(updated);
+        trackPayment("plan_activated_with_coupon", { plan: planCode, coupon: couponCode });
         setMessage("Your coupon has activated the selected plan. No payment is required.");
         setWorking(false);
         return;
@@ -188,19 +203,22 @@ export function useBilling() {
         theme: { color: "#8e44ad" },
         handler: (response: RazorpaySuccess) => {
           setCheckoutOpen(false);
-          void verifyRazorpayPayment(response, token);
+          void verifyRazorpayPayment(response, token, purchase, session.test_mode);
         },
-        modal: { ondismiss: () => { setCheckoutOpen(false); setWorking(false); } },
+        modal: { ondismiss: () => { trackPayment("checkout_cancelled", { plan: planCode }, session.test_mode); setCheckoutOpen(false); setWorking(false); } },
       });
       checkout.on("payment.failed", (response) => {
+        trackPayment("payment_failed", { plan: planCode, reason: response.error?.reason ?? response.error?.code ?? "unknown" }, session.test_mode);
         setError(response.error?.description ?? "Payment failed. No charge was completed.");
       });
       // Native modal dialogs must leave the top layer before Razorpay opens.
       flushSync(() => setCheckoutOpen(true));
       checkout.open();
+      trackPayment("add_payment_info", purchase, session.test_mode);
     } catch (requestError) {
       setCheckoutOpen(false);
       if (requestError instanceof ApiError && requestError.status === 401) return unauthorized();
+      trackPayment("checkout_error", { plan: planCode });
       setError(checkoutErrorMessage(
         requestError,
         razorpayConfig?.test_mode,

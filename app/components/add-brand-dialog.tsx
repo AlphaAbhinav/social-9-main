@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import Link from "./link";
 import { apiRequest, Social9Brand } from "../lib/api";
 import { getAccessToken } from "../lib/session";
+import { track } from "../lib/track";
 
 const subscribeToBrowser = () => () => undefined;
 const getBrowserSnapshot = () => true;
@@ -77,6 +78,7 @@ export function AddBrandDialog({ onClose, onCreated }: {
         headers: { Authorization: `Bearer ${token}` },
         body: JSON.stringify({ name: trimmedName }),
       });
+      track("brand_created");
       onCreated(brand);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Unable to add the brand. Please try again.");

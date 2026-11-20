@@ -22,6 +22,7 @@ import type { AnalyticsSummary } from "../lib/analytics";
 import { clearSession, getAccessToken } from "../lib/session";
 import "./workspace-loading.css";
 import { cacheGeneration, DASHBOARD_CACHE_EVENT, readDashboardCache, writeDashboardCache } from "../lib/dashboard-cache";
+import { track } from "../lib/track";
 
 function scoreFor(data: AnalyticsSummary): number {
   const connected = Math.min(30, data.overview.connected_accounts * 15);
@@ -155,6 +156,7 @@ export default function DashboardPage({ preview = false }: { preview?: boolean }
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
+      track("post_duplicated", { location: "/dashboard" });
       setReuseMessage("Reusable draft created. It is ready in your content library.");
     } catch (requestError) {
       if (requestError instanceof ApiError && requestError.status === 401) {

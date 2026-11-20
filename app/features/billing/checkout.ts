@@ -8,7 +8,7 @@ export type RazorpaySuccess = {
 
 type RazorpayCheckout = {
   open: () => void;
-  on: (event: "payment.failed", handler: (response: { error?: { description?: string } }) => void) => void;
+  on: (event: "payment.failed", handler: (response: { error?: { description?: string; reason?: string; code?: string } }) => void) => void;
 };
 
 declare global {

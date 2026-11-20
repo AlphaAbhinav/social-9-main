@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "./link";
+import { track } from "../lib/track";
 
 const functions = [
   { title: "Create post", href: "/create-post", description: "Write, publish, or schedule a post", keywords: "caption ai assistant image collage upload" },
@@ -42,7 +43,7 @@ export function WorkspaceSearch() {
   const words = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
   const results = functions.filter((item) => words.every((word) => `${item.title} ${item.description} ${item.keywords}`.toLowerCase().includes(word)));
   return <div ref={anchor} role="group" aria-label="Find a workspace function" className="workspace-search" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget) && !menu.current?.contains(event.relatedTarget)) setOpen(false); }}>
-    <form role="search" onSubmit={(event) => { event.preventDefault(); setOpen(true); if (results.length) window.location.assign(results[0].href); }}>
+    <form role="search" onSubmit={(event) => { event.preventDefault(); setOpen(true); track("search", { search_term: query.trim().slice(0, 100) }); if (results.length) window.location.assign(results[0].href); }}>
       <input onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }} type="search" aria-label="Search by function" placeholder="Search by function…" value={query} onFocus={() => setOpen(true)} onChange={(event) => { setQuery(event.target.value); setOpen(true); }} />
       <button type="submit" aria-label="Search functions">⌕</button>
     </form>

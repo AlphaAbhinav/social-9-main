@@ -11,6 +11,7 @@ import { ConfirmationDialog } from "../components/confirmation-dialog";
 import { DashboardPageFrame } from "../components/dashboard-page-frame";
 import { ApiError, apiRequest, getActiveBrandId } from "../lib/api";
 import { clearSession, getAccessToken, getSessionUser } from "../lib/session";
+import { track } from "../lib/track";
 
 type TrendSnapshot = { country: string; fetched_at: string; source: string; trends: { title: string; published_at: string; source_url: string }[] };
 
@@ -254,6 +255,7 @@ export default function CalendarPage() {
       });
       if (result.items.length !== 30 * postsPerDay) throw new Error("The AI returned an incomplete plan. Please try again.");
       setAiItems(result.items);
+      track("content_plan_generated", { provider: aiPlatform, label: `${postsPerDay}_per_day`, method: useCurrentTrends ? "with_trends" : "standard" });
       setAiGenerationId(result.generation_id ?? null);
       setTrendSnapshot(result.trend_snapshot ?? null);
       const key = aiPlanStorageKey();

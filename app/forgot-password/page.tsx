@@ -6,6 +6,7 @@ import Link from "../components/link";
 
 import { AuthShell } from "../components/auth-shell";
 import { apiRequest } from "../lib/api";
+import { track } from "../lib/track";
 
 type ActionResponse = {
   message: string;
@@ -31,6 +32,7 @@ export default function ForgotPasswordPage() {
         body: JSON.stringify({ email }),
       });
       setMessage(data.message);
+      track("password_reset_requested");
       if (data.token) {
         window.location.assign(`/reset-password?token=${encodeURIComponent(data.token)}`);
         return;

@@ -7,6 +7,7 @@ import { getContentTemplate, templateDraft } from "../../lib/content-templates";
 import { personalizeTemplate, templateChannels, templateSupportedChannels, type BrandTemplateProfile, type TemplateChannel } from "../../lib/brand-templates";
 import { clearSession, getAccessToken } from "../../lib/session";
 import { type MediaPayload, fileData, photoForAssistant, makeCollage, instagramReadyFile, postThumbnail } from "./media";
+import { track } from "../../lib/track";
 
 type FacebookPage = { id: number; provider: string; account_name: string; status: string; environment?: string };
 
@@ -168,6 +169,7 @@ export function useComposer() {
             ...(chosen === "youtube" ? { youtube_title: selectedTemplate.title } : {}),
             ...(chosen === "pinterest" ? { pinterest_title: selectedTemplate.title } : {}),
           }));
+          track("template_used", { label: selectedTemplate.title, provider: chosen });
           setMessage(`${selectedTemplate.title} is ready for ${brand.name}. Replace the remaining bracketed details and add your media before publishing.`);
         }).catch(cause => { if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : "Unable to personalize this template."); });
       } else if (idea) {
@@ -248,6 +250,7 @@ export function useComposer() {
         body: JSON.stringify({ action: aiAction, topic, images, platform: platforms[0] ?? "all", ...(platforms.length ? { platforms } : {}) }),
       });
       setAiResult(result);
+      track("ai_assist_used", { label: aiAction, platforms: platforms.join(",") || "all" });
     } catch (requestError) {
       if (requestError instanceof ApiError && requestError.status === 401) return unauthorized();
       setAiError(requestError instanceof Error ? requestError.message : "Unable to use the content assistant.");
@@ -289,6 +292,7 @@ export function useComposer() {
       setCollageOriginals(files);
       setFiles([collage]);
       setCollagePreview(URL.createObjectURL(collage));
+      track("collage_created");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Could not make the collage.");
     } finally {
@@ -357,11 +361,13 @@ export function useComposer() {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (result.status === "failed") {
+          track("post_publish_failed", { platforms: platforms.join(","), post_type: postType });
           setError(result.publish_error ?? "The provider could not publish this post.");
           await loadPosts();
           return;
         }
       }
+      track(mode === "draft" ? "post_draft_saved" : mode === "scheduled" ? "post_scheduled" : "post_published", { platforms: platforms.join(","), post_type: postType, method: templateVisual ? "template" : "manual" });
       setCaption("");
       setFiles([]);
       setCollageOriginals(null);

@@ -5,6 +5,7 @@ import { DashboardPageFrame } from "../components/dashboard-page-frame";
 import { apiRequest, getActiveBrandId } from "../lib/api";
 import { getAccessToken } from "../lib/session";
 import "./agency.css";
+import { track } from "../lib/track";
 
 type Workspace = { id: number; name: string; role: string; accepted: boolean };
 type History = { actor: string; action: string; comment: string; at: string };
@@ -87,6 +88,7 @@ const count = (value: number | null | undefined) =>
 const day = (date: Date) => date.toISOString().slice(0, 10);
 
 function csvDownload(filename: string, rows: (string | number)[][]) {
+  track("report_exported", { label: filename.replace(/\.csv$/, "").replace(/-?\d+/g, "") });
   const csv = rows
     .map((row) =>
       row

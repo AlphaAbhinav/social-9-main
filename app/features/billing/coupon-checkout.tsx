@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { ApiError, apiRequest } from "../../lib/api";
 import { clearSession, getAccessToken } from "../../lib/session";
+import { track } from "../../lib/track";
 
 type Plan = { code: string; name: string; commitment: string; total_price_inr: number };
 type Quote = { coupon_code: string | null; original_amount_minor: number; discount_minor: number; amount_minor: number };
@@ -29,8 +30,10 @@ export function CouponCheckout({ plan, busy, checkoutOpen, error, close, pay }: 
     try {
       const next = await apiRequest<Quote>("/billing/coupons/quote", { method: "POST", headers: { Authorization: `Bearer ${getAccessToken()}` }, body: JSON.stringify({ plan_code: plan.code, coupon_code: code.trim() }) });
       setQuote(next); setCode(next.coupon_code ?? "");
+      track("coupon_applied", { plan: plan.code, coupon: next.coupon_code ?? undefined, value: next.amount_minor / 100 });
     } catch (error) {
       if (error instanceof ApiError && error.status === 401) { clearSession(); window.location.replace("/login"); return; }
+      track("coupon_failed", { plan: plan.code });
       setFailure(error instanceof Error ? error.message : "Unable to apply coupon.");
     } finally { setChecking(false); }
   }

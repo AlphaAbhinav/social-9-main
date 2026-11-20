@@ -6,6 +6,7 @@ import Link from "../components/link";
 
 import { AuthShell } from "../components/auth-shell";
 import { apiRequest } from "../lib/api";
+import { track } from "../lib/track";
 
 type ActionResponse = { message: string; token?: string | null };
 
@@ -24,7 +25,9 @@ export default function VerifyEmailPage() {
       });
       setMessage(data.message);
       setStatus("success");
+      track("email_verified");
     } catch (verificationError) {
+      track("form_error", { form: "verify_email", reason: "api_error" });
       setMessage(verificationError instanceof Error ? verificationError.message : "Verification failed.");
       setStatus("error");
     }
@@ -48,6 +51,7 @@ export default function VerifyEmailPage() {
         method: "POST",
         body: JSON.stringify({ email }),
       });
+      track("verification_email_requested");
       if (data.token) {
         await verifyToken(data.token);
       } else {

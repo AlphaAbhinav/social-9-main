@@ -9,6 +9,7 @@ import { SocialIcon } from "../components/social-icon";
 import { isComingSoonProvider, platformName } from "../lib/provider-availability";
 import { ApiError, apiRequest } from "../lib/api";
 import { clearSession, getAccessToken } from "../lib/session";
+import { track } from "../lib/track";
 
 type Provider = "instagram" | "linkedin" | "facebook" | "threads" | "youtube" | "twitter" | "pinterest";
 
@@ -94,6 +95,8 @@ export default function AccountsPage() {
     })
       .then((loadedAccounts) => {
         setAccounts(loadedAccounts);
+        if (connectedProvider) track("account_connected", { provider: connectedProvider });
+        else if (oauthError) track("account_connect_failed", { provider: oauthError.split("_")[0], reason: oauthError });
         if (connectedProvider) {
           setMessage(`${platformName(connectedProvider)} connected successfully.`);
         } else if (oauthError?.endsWith("_access_denied")) {
@@ -137,6 +140,7 @@ export default function AccountsPage() {
     if (!token) return handleUnauthorized();
     setWorkingProvider(provider);
     setError("");
+    track("account_connect_start", { provider, method: sandbox ? "sandbox" : includePages ? "pages" : "profile" });
     try {
       const response = await apiRequest<ConnectResponse>(
         `/social-accounts/${provider}/connect${sandbox ? "?sandbox=true" : includePages ? "?include_pages=true" : ""}`,
@@ -185,6 +189,7 @@ export default function AccountsPage() {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAccounts((current) => current.filter((item) => item.id !== account.id));
+      track("account_disconnected", { provider: account.provider });
       setMessage(`${account.account_name} disconnected.`);
       setPendingDisconnect(null);
     } catch (requestError) {
