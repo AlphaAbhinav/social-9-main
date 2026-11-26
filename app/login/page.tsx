@@ -6,6 +6,7 @@ import Link from "../components/link";
 
 import { PlanIntentSummary } from "../components/plan-intent-summary";
 import { AuthShell } from "../components/auth-shell";
+import { SharedAccountSignIn } from "../components/shared-account";
 import { apiRequest } from "../lib/api";
 import type { Social9User } from "../lib/api";
 import { planDestination } from "../lib/plan-intent";
@@ -66,6 +67,7 @@ export default function LoginPage() {
         <p>Pick up where you left off and keep your content moving.</p>
       </div>
 
+      <SharedAccountSignIn />
       <form onSubmit={handleSubmit} noValidate>
         <label className="field-label" htmlFor="email">Email address</label>
         <div className="input-wrap">
