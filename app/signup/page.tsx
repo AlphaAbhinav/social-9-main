@@ -6,7 +6,6 @@ import Link from "../components/link";
 
 import { PlanIntentSummary } from "../components/plan-intent-summary";
 import { AuthShell } from "../components/auth-shell";
-import { SharedAccountSignIn } from "../components/shared-account";
 import { apiRequest } from "../lib/api";
 import type { Social9User } from "../lib/api";
 import { getAccessToken } from "../lib/session";
@@ -63,9 +62,6 @@ export default function SignupPage() {
     }
   }
 
-  if (process.env.NEXT_PUBLIC_ECOSYSTEM_SSO_ENABLED === "true") {
-    return <AuthShell><div className="form-heading"><h2>Create one VisionaryCue account</h2><p>Register once for Social9, vCueHub and connected vCueStore access.</p></div><SharedAccountSignIn /><Link href="/login">Already have a Social9 account? Sign in or link it.</Link></AuthShell>;
-  }
 
   return (
     <AuthShell>
